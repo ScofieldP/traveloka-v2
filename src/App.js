@@ -4,7 +4,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter, Route, Routes, Switch} from 'react-router-dom';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import Restaurant from './components/restaurant/Restaurant'
+import Restaurant from './components/restaurant/Restaurant';
+import Choice from './components/choiceRes/Choice';
+
 function App() {
   return (
 
@@ -14,6 +16,7 @@ function App() {
     <Route path='/login' element={<Login />} />
     <Route path='/register' element={<Register />} />
     <Route path='/restaurant' element={<Restaurant />} />
+    <Route path='/choicerestaurant' element={<Choice />} />
     </Routes>
     </BrowserRouter>
   );
