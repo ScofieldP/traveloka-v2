@@ -166,7 +166,7 @@ const Choice = () => {
                                 Opening Hours: Today * 09.00 ~ 22.00
                             </p>
                              <p className="m-0">Price Range: $ 500VND/person </p>
-                            sadasdas
+                            qwkejlkwqjepwq
                         </div>
                     </div>
 
