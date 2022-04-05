@@ -80,7 +80,7 @@ const Choice = () => {
             <div className="select_res mt-4">
             <div className="container w-75  ">
                 <div className="d-flex justify-content-between">
-                    <div className="w-25 border border-dark me-3">
+                    <div className="w-25 border border-dark me-5">
                         alksdjaklsd
                     </div>
                     <div className="w-75 border border-danger">
