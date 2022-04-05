@@ -79,15 +79,102 @@ const Choice = () => {
             </div>
             <div className="select_res mt-4">
             <div className="container w-75  ">
-                <div className="d-flex justify-content-between">
-                    <div className="filter">
-                        salkdlkasjdkl
+            <div className="row">
+                <div className ="col-2 border border-dark " style={{height:"100px"}}>
+                    aksdjhaklsjdlaksd
+               </div>
+
+               <div className="col-8 ms-5">
+                    <div className="row border border-dark ">
+                        <div className="col-4 ps-0">
+                            <img src ="./assets/img/food-14.png" className="m-0" alt="" style={{width:"200px" , height:"200px"}}/>
+                        </div>
+                        <div className="col-6">
+                            <p className="mt-3 mb-0">
+                                Order, Reservation
+                            </p>
+                            <p className="fw-bold fs-3 m-0">
+                                Fried Chicken - No.1
+                            </p>
+                            <p className="fs-6">
+                               District 1, Ho Chi Minh City  
+                            </p>
+                            <p className="m-0">
+                                Opening Hours: Today * 09.00 ~ 22.00
+                            </p>
+                             <p className="m-0">Price Range: $ 500VND/person </p>
+                        </div>
+                        
                     </div>
-                    <div className="slc_res">
-                        alksdjasidajsoi
+                    
+                    <div className="row mt-3 border border-dark">
+                        <div className="col-4 ps-0">
+                            <img src ="./assets/img/food-14.png" alt="" style={{width:"200px" , height:"200px"}}/>
+                        </div>
+                        <div className="col-6">
+                            <p className="mt-3 mb-0">
+                                Order, Reservation
+                            </p>
+                            <p className="fw-bold fs-3 m-0">
+                                Fried Chicken - No.1
+                            </p>
+                            <p className="fs-6">
+                               District 1, Ho Chi Minh City  
+                            </p>
+                            <p className="m-0">
+                                Opening Hours: Today * 09.00 ~ 22.00
+                            </p>
+                             <p className="m-0">Price Range: $ 500VND/person </p>
+                        </div>
                     </div>
-                </div>
+                    <div className="row mt-3 border border-dark">
+                        <div className="col-4 ps-0">
+                            <img src ="./assets/img/food-14.png" alt="" style={{width:"200px" , height:"200px"}}/>
+                        </div>
+                        <div className="col-6">
+                            <p className="mt-3 mb-0">
+                                Order, Reservation
+                            </p>
+                            <p className="fw-bold fs-3 m-0">
+                                Fried Chicken - No.1
+                            </p>
+                            <p className="fs-6">
+                               District 1, Ho Chi Minh City  
+                           </p>
+                            <p className="m-0">
+                                Opening Hours: Today * 09.00 ~ 22.00
+                            </p>
+                             <p className="m-0">Price Range: $ 500VND/person </p>
+                            
+                        </div>
+                    </div>
+                     <div className="row mt-3 border border-dark">
+                        <div className="col-4 ps-0">
+                            <img src ="./assets/img/food-14.png" alt="" style={{width:"200px" , height:"200px"}}/>
+                        </div>
+                        <div className="col-6">
+                            <p className="mt-3 mb-0">
+                                Order, Reservation
+                            </p>
+                            <p className="fw-bold fs-3 m-0">
+                                Fried Chicken - No.1
+                            </p>
+                            <p className="fs-6">
+                               District 1, Ho Chi Minh City  
+                           </p>
+                            <p className="m-0">
+                                Opening Hours: Today * 09.00 ~ 22.00
+                            </p>
+                             <p className="m-0">Price Range: $ 500VND/person </p>
+                            sadasdas
+                        </div>
+                    </div>
+
+                    
+               </div>
             </div>
+             
+            </div> 
             </div>
            
         </section>
