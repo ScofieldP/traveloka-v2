@@ -6,7 +6,7 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Restaurant from './components/restaurant/Restaurant';
 import Choice from './components/choiceRes/Choice';
-
+import DetailRes from './components/choiceRes/DetailRes'
 function App() {
   return (
 
@@ -17,6 +17,7 @@ function App() {
     <Route path='/register' element={<Register />} />
     <Route path='/restaurant' element={<Restaurant />} />
     <Route path='/choicerestaurant' element={<Choice />} />
+    <Route path='/detailres' element={<DetailRes />} />
     </Routes>
     </BrowserRouter>
   );
