@@ -168,7 +168,7 @@ const Detailres = () => {
                           <div className="btn_order d-flex mt-3">
                             <div className="order_food">
                               <button type="button" class="btn btn-warning me-3">
-                                <Link className="text-decoration-none text-black" to ="/orderFood" element={ <OrderFood />}>Đặt bàn</Link>
+                                <Link className="text-decoration-none text-black" to ="/orderFood" element={ <OrderFood />}>Đặt Online</Link>
                               </button>
 
                             </div>
