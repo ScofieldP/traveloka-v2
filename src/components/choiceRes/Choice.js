@@ -170,7 +170,7 @@ function Choice () {
     return (    
         <>
         <section className="header">
-        <div class="container">
+        <div class="container bg-white ">
         <div class="row mt-2 ">
             <div className="d-flex justify-content-between  ">
             <div className="logo_img ">
@@ -184,7 +184,7 @@ function Choice () {
             </div>
         </div>
         </div>
-        <div className="nav_bar">
+        <div className="nav_bar  ">
         <Navbar bg="light" expand="lg">
         <Container >
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
