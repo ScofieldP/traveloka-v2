@@ -37,3 +37,48 @@
   padding-top: 150px;
   padding-bottom: 100px;
 }
+.paginationBttns{
+  width: 80%;
+  height:40px;
+  list-style: none;
+  display: flex;
+  margin-left:400px;
+  margin-top:60px;
+}
+.paginationBttns a {
+  padding: 10px;
+  margin:8px;
+  border-radius:5px;
+  border: 1px solid #2b2eff;
+  color:#2b2eff;
+  cursor: pointer;
+}
+.paginationBttns a:hover {
+  color:white;
+  background-color: #2b2eff;
+}
+
+.paginationActive a{
+  color:white;
+  background-color: #2b2eff;
+}
+
+.res_collection{
+  padding:20px;
+  font-size:20px;
+  cursor: pointer;
+}
+
+
+.res_all {
+  margin-right: 50px;
+
+}
+.res_menu{
+  margin-right: 50px;
+
+}
+.res_photos{
+  margin-right: 50px;
+
+}

@@ -11,7 +11,7 @@ import ReactPaginate from 'react-paginate';
 
 function Choice () {
     //fake DB
-    const [foods, setFoods] = useState([
+  const [foods, setFoods] = useState([
       {
         id:1,
         title: 'Order, Reservation',
@@ -131,8 +131,6 @@ function Choice () {
         img:"./assets/img/food-14.png",
       },
   ]);
-
-  
   const [pageNumber, setPageNumber] = useState(0);
   const usersPerPage = 3; //set số lượng item
   const pageVisited = pageNumber * usersPerPage;
@@ -161,18 +159,15 @@ function Choice () {
                         </div>
                         
                     </div>
-    </>
-
-
-  
+          </>
     );
   });
   const pageCount = Math.ceil(foods.length / usersPerPage);
   const changePage = ({selected}) =>{
       setPageNumber(selected);
   };
-    return (
-      
+
+    return (    
         <>
         <section className="header">
         <div class="container">
