@@ -4,7 +4,15 @@ import { Link } from 'react-router-dom';
 import Login from ".././auth/Login";
 import Register from ".././auth/Register";
 import {TabContainer,Row, Col, Tab} from 'react-bootstrap'
+import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
+
 const OrderTable = () => {
+    const [startDate, setStartDate] = useState(new Date());
+    let handleColor = (time) => {
+        return time.getHours() > 12 ? "text-success" : "text-error";
+    };
+    
     return (
         <>
             <section className="header">
@@ -56,6 +64,9 @@ const OrderTable = () => {
                     <Nav.Item>
                     <Nav.Link eventKey="second">Đặt món trước</Nav.Link>
                     </Nav.Item>
+                    <Nav.Item>
+                    <Nav.Link eventKey="third">Chi tiết hóa đơn</Nav.Link>
+                    </Nav.Item>
                 </Nav>
                 </Col>
                 <Col sm={9}>
@@ -67,15 +78,72 @@ const OrderTable = () => {
                             </div>
                             <div className="form_tbl d-flex">
                                 <div className="col-6  border border-danger">
-                                    ALo22212
+                                    {/* Thời gian nhận bàn */}
+                                    <div className="date_picker">
+                                    <label for="datepicker" class="form-label">Thời gian nhận bàn</label>
+                                        <DatePicker
+                                        showTimeSelect
+                                        selected={startDate}
+                                        dateFormat='dd/MM/yyyy'
+                                        onChange={(date) => setStartDate(date)}
+                                        timeClassName={handleColor}
+                                        />
+                                    </div>
+                                    {/* Số điện thoại */}
+                                    <div className="phone_number mt-3">
+                                    <label for="datepicker" class="form-label">Số điện thoại</label>
+                                    <input type="text" class="form-control" placeholder="Số điện thoại"/>
+                                    </div>
+                                    
+                                    {/* Chọn bàn */}
+                                    <div className="pick_table mt-3">
+                                    <label for="datepicker" class="form-label">Chọn bàn</label>
+                                    <input type="text" class="form-control" placeholder="Số điện thoại"/>
+                                    </div>
+                                    
+                                    {/* Đặt cọc trước */}
+                                    <div className="pick_table mt-3">
+                                    <label for="datepicker" class="form-label">Đặt cọc trước</label>
+                                    <input type="text" class="form-control" placeholder="Đặt cọc trước"/>
+                                    </div>
                                 </div>
+
+                                
                                 <div className="col-6 border border-warning">
-                                    lksajd1212
+                                    {/* Số khách */}
+                                    <div className="pick_table">
+                                    <label for="datepicker" class="form-label">Số khách</label>
+                                    <input type="text" class="form-control" placeholder="Đặt cọc trước"/>
+                                    </div>
+
+                                    {/* Khách hàng */}
+                                    <div className="pick_table mt-3">
+                                    <label for="datepicker" class="form-label">Khách hàng</label>
+                                    <input type="text" class="form-control" placeholder="Nhập tên khách hàng"/>
+                                    </div>
+
+                                    {/* Ghi chú */}
+                                    <div className="pick_table mt-3">
+                                    <label for="datepicker" class="form-label">Ghi chú</label>
+                                    <input type="text" class="form-control" placeholder="Ghi chú"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </Tab.Pane>
                     <Tab.Pane eventKey="second">
+                        <div className="container border border-dark">
+                        <div className="order_title border-0 border-bottom border-dark"> 
+                            <h4 className="text-center">Đặt món trước</h4>
+
+                        </div>
+
+                        
+
+                        
+                        </div>
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="third">
                         aslkdjasoido
                     </Tab.Pane>
                 </Tab.Content>
