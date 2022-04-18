@@ -6,13 +6,70 @@ import Register from ".././auth/Register";
 import {TabContainer,Row, Col, Tab} from 'react-bootstrap'
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 
 const OrderTable = () => {
     const [startDate, setStartDate] = useState(new Date());
     let handleColor = (time) => {
         return time.getHours() > 12 ? "text-success" : "text-error";
     };
-    
+const [orders, setOrder] = useState([
+    {
+        id:1,
+        title: 'Fried Chicken',
+        description: 'Cho nhiều người',
+        price: '500.000VND',
+        img:"./assets/img/food-13.png",
+    },
+    {
+        id:2,
+        title: 'Fried Chicken',
+        description: 'Cho nhiều người',
+        price: '500.000VND',
+        img:"./assets/img/food-13.png",
+    },
+    {
+        id:3,
+        title: 'Fried Chicken',
+        description: 'Cho nhiều người',
+        price: '500.000VND',
+        img:"./assets/img/food-13.png",
+    },
+    {       
+        id:4,
+        title: 'Fried Chicken',
+        description: 'Cho nhiều người',
+        price: '500.000VND',
+        img:"./assets/img/food-13.png",
+    },
+]);
+    const displayOrder = orders
+    .map((order) =>{
+        return(
+         <>
+          <div className="row">
+                            <div className="col-3">
+                                <img src={order.img} alt="" style={{width:'200px', height:'200px'}}/>
+                            </div>
+                            <div className = "col-7">
+                                <p className ="">
+                                    {order.title}
+                                </p>
+                                <p className ="">
+                                    {order.description}
+                                </p>
+                                <p className ="">
+                                    {order.price}
+                                </p>
+                            </div>
+                            <div className="col-2">
+                                <FontAwesomeIcon icon={faCirclePlus} className ="me-3" />
+                            </div>
+                        </div>
+         </>   
+        )
+    });
     return (
         <>
             <section className="header">
@@ -135,9 +192,11 @@ const OrderTable = () => {
                         <div className="container border border-dark">
                         <div className="order_title border-0 border-bottom border-dark"> 
                             <h4 className="text-center">Đặt món trước</h4>
-
+                            
                         </div>
-
+                        <div className="">
+                            {displayOrder}
+                        </div>
                         
 
                         
