@@ -110,7 +110,7 @@ const [drinks, setDrinks] = useState([
         return(
          <>
           <div className="row">
-                            <div className="col-3">
+                            <div className="col-3">         
                                 <img src={drink.img} alt="" style={{width:'200px', height:'200px'}}/>
                             </div>
                             <div className = "col-7">
@@ -132,7 +132,66 @@ const [drinks, setDrinks] = useState([
          </>   
         )
     });
-    
+
+// dessert
+const [desserts, setDesserts] = useState([
+    {
+        id:1,
+        title: 'Fried Chicken',
+        description: 'Cho nhiều người',
+        price: '500.000VND',
+        img:"./assets/img/food-13.png",
+    },
+    {
+        id:2,
+        title: 'Fried Chicken',
+        description: 'Cho nhiều người',
+        price: '500.000VND',
+        img:"./assets/img/food-13.png",
+    },
+    {
+        id:3,
+        title: 'Fried Chicken',
+        description: 'Cho nhiều người',
+        price: '500.000VND',
+        img:"./assets/img/food-13.png",
+    },
+    {       
+        id:4,
+        title: 'Fried Chicken',
+        description: 'Cho nhiều người',
+        price: '500.000VND',
+        img:"./assets/img/food-13.png",
+    },
+]);
+    const displayDesserts = desserts
+    .map((dessert) =>{
+        return(
+         <>
+          <div className="row">
+                            <div className="col-3">         
+                                <img src={dessert.img} alt="" style={{width:'200px', height:'200px'}}/>
+                            </div>
+                            <div className = "col-7">
+                                <p className ="">
+                                    {dessert.title}
+                                </p>
+                                <p className ="">
+                                    {dessert.description}
+                                </p>
+                                <p className ="">
+                                    {dessert.price}
+                                </p>
+                            </div>
+                            <div className="col-2">
+                                <FontAwesomeIcon icon={faCirclePlus} className ="me-3" />
+                            </div>
+                        </div>
+
+         </>   
+        )
+    });
+
         return (
         <>
             <section className="header">
@@ -266,7 +325,7 @@ const [drinks, setDrinks] = useState([
                                 {displayDrink}
                             </Tab>
                             <Tab eventKey="contact" title="Tráng miệng">
-                                
+                               {displayDesserts}
                             </Tab>
                         </Tabs>
                         </div>
@@ -276,7 +335,6 @@ const [drinks, setDrinks] = useState([
                         </div>
                     </Tab.Pane>
                     <Tab.Pane eventKey="third">
-                        aslkdjasoido
                     </Tab.Pane>
                 </Tab.Content>
                 </Col>
