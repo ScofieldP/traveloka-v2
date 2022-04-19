@@ -49,9 +49,9 @@ const [orders, setOrder] = useState([
     .map((order) =>{
         return(
          <>
-          <div className="row">
+          <div className="row mt-3">
                             <div className="col-3">
-                                <img src={order.img} alt="" style={{width:'200px', height:'200px'}}/>
+                                <img src={order.img} alt="" style={{width:'150px', height:'150px'}}/>
                             </div>
                             <div className = "col-7">
                                 <p className ="">
@@ -65,7 +65,7 @@ const [orders, setOrder] = useState([
                                 </p>
                             </div>
                             <div className="col-2">
-                                <FontAwesomeIcon icon={faCirclePlus} className ="me-3" />
+                                <FontAwesomeIcon icon={faCirclePlus} />
                             </div>
                         </div>
 
@@ -109,9 +109,9 @@ const [drinks, setDrinks] = useState([
     .map((drink) =>{
         return(
          <>
-          <div className="row">
+          <div className="row mt-3">
                             <div className="col-3">         
-                                <img src={drink.img} alt="" style={{width:'200px', height:'200px'}}/>
+                                <img src={drink.img} alt="" style={{width:'150px', height:'150px'}}/>
                             </div>
                             <div className = "col-7">
                                 <p className ="">
@@ -168,9 +168,9 @@ const [desserts, setDesserts] = useState([
     .map((dessert) =>{
         return(
          <>
-          <div className="row">
+          <div className="row mt-3">
                             <div className="col-3">         
-                                <img src={dessert.img} alt="" style={{width:'200px', height:'200px'}}/>
+                                <img src={dessert.img} alt="" style={{width:'150px', height:'150px'}}/>
                             </div>
                             <div className = "col-7">
                                 <p className ="">
