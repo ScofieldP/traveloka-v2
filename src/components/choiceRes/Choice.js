@@ -14,7 +14,7 @@ function Choice () {
   const [foods, setFoods] = useState([
       {
         id:1,
-        title: 'Order, Reservation',
+        title: 'Order, Reservation', 
         foodTitle:'Fried Chicken',
         street: ' District 1, Ho Chi Minh City',
         open:'Opening Hours: Today * 09.00 ~ 22.00',
