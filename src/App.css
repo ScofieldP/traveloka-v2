@@ -144,3 +144,11 @@
   border-radius: 0.25rem;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+    border-color: none;
+  
+}
+.nav-link .nav-link.active{
+  border-color:none;
+}

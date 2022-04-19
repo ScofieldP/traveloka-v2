@@ -3,7 +3,7 @@ import { Navbar,Container,Nav,NavDropdown,Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Login from ".././auth/Login";
 import Register from ".././auth/Register";
-import {TabContainer,Row, Col, Tab} from 'react-bootstrap'
+import {TabContainer,Row, Col, Tab, Tabs} from 'react-bootstrap'
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,6 +14,7 @@ const OrderTable = () => {
     let handleColor = (time) => {
         return time.getHours() > 12 ? "text-success" : "text-error";
     };
+    //food
 const [orders, setOrder] = useState([
     {
         id:1,
@@ -67,10 +68,72 @@ const [orders, setOrder] = useState([
                                 <FontAwesomeIcon icon={faCirclePlus} className ="me-3" />
                             </div>
                         </div>
+
          </>   
         )
     });
-    return (
+
+    
+    //drink
+const [drinks, setDrinks] = useState([
+    {
+        id:1,
+        title: 'Fried Chicken',
+        description: 'Cho nhiều người',
+        price: '500.000VND',
+        img:"./assets/img/food-13.png",
+    },
+    {
+        id:2,
+        title: 'Fried Chicken',
+        description: 'Cho nhiều người',
+        price: '500.000VND',
+        img:"./assets/img/food-13.png",
+    },
+    {
+        id:3,
+        title: 'Fried Chicken',
+        description: 'Cho nhiều người',
+        price: '500.000VND',
+        img:"./assets/img/food-13.png",
+    },
+    {       
+        id:4,
+        title: 'Fried Chicken',
+        description: 'Cho nhiều người',
+        price: '500.000VND',
+        img:"./assets/img/food-13.png",
+    },
+]);
+    const displayDrink = drinks
+    .map((drink) =>{
+        return(
+         <>
+          <div className="row">
+                            <div className="col-3">
+                                <img src={drink.img} alt="" style={{width:'200px', height:'200px'}}/>
+                            </div>
+                            <div className = "col-7">
+                                <p className ="">
+                                    {drink.title}
+                                </p>
+                                <p className ="">
+                                    {drink.description}
+                                </p>
+                                <p className ="">
+                                    {drink.price}
+                                </p>
+                            </div>
+                            <div className="col-2">
+                                <FontAwesomeIcon icon={faCirclePlus} className ="me-3" />
+                            </div>
+                        </div>
+
+         </>   
+        )
+    });
+    
+        return (
         <>
             <section className="header">
                 <div class="container">
@@ -195,7 +258,17 @@ const [orders, setOrder] = useState([
                             
                         </div>
                         <div className="">
-                            {displayOrder}
+                        <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" className="mb-3 justify-content-center border-0">
+                            <Tab eventKey="home" title="Món ăn" className=" border border-0">
+                                {displayOrder}
+                            </Tab>
+                            <Tab eventKey="profile" title="Thức uống">
+                                {displayDrink}
+                            </Tab>
+                            <Tab eventKey="contact" title="Tráng miệng">
+                                
+                            </Tab>
+                        </Tabs>
                         </div>
                         
 
