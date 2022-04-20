@@ -16,7 +16,7 @@ const OrderTable = () => {
     let handleColor = (time) => {
         return time.getHours() > 12 ? "text-success" : "text-error";
     };
-    //food
+    //foods
 const [orders, setOrder] = useState([
     {
         id:1,
