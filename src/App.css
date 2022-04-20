@@ -152,3 +152,6 @@
 .nav-link .nav-link.active{
   border-color:none;
 }
+.add_btn{
+  margin-top: 60px;
+}

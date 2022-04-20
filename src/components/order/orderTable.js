@@ -8,6 +8,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
+import Modal from 'react-modal';
+
 
 const OrderTable = () => {
     const [startDate, setStartDate] = useState(new Date());
@@ -49,7 +51,7 @@ const [orders, setOrder] = useState([
     .map((order) =>{
         return(
          <>
-          <div className="row mt-3">
+          <div className="row mt-3 border border-dark">
                             <div className="col-3">
                                 <img src={order.img} alt="" style={{width:'150px', height:'150px'}}/>
                             </div>
@@ -64,8 +66,8 @@ const [orders, setOrder] = useState([
                                     {order.price}
                                 </p>
                             </div>
-                            <div className="col-2">
-                                <FontAwesomeIcon icon={faCirclePlus} />
+                            <div className="col-2 ">
+                                <FontAwesomeIcon icon={faCirclePlus} className="add_btn"/>
                             </div>
                         </div>
 
@@ -109,7 +111,7 @@ const [drinks, setDrinks] = useState([
     .map((drink) =>{
         return(
          <>
-          <div className="row mt-3">
+          <div className="row mt-3 border border-dark">
                             <div className="col-3">         
                                 <img src={drink.img} alt="" style={{width:'150px', height:'150px'}}/>
                             </div>
@@ -125,7 +127,7 @@ const [drinks, setDrinks] = useState([
                                 </p>
                             </div>
                             <div className="col-2">
-                                <FontAwesomeIcon icon={faCirclePlus} className ="me-3" />
+                                <FontAwesomeIcon icon={faCirclePlus} className="add_btn" />
                             </div>
                         </div>
 
@@ -168,7 +170,7 @@ const [desserts, setDesserts] = useState([
     .map((dessert) =>{
         return(
          <>
-          <div className="row mt-3">
+          <div className="row mt-3 border border-dark">
                             <div className="col-3">         
                                 <img src={dessert.img} alt="" style={{width:'150px', height:'150px'}}/>
                             </div>
@@ -184,7 +186,8 @@ const [desserts, setDesserts] = useState([
                                 </p>
                             </div>
                             <div className="col-2">
-                                <FontAwesomeIcon icon={faCirclePlus} className ="me-3" />
+                                <FontAwesomeIcon icon={faCirclePlus} className="add_btn" />
+
                             </div>
                         </div>
 
