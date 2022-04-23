@@ -1,4 +1,5 @@
-import {React, useState, useEffect} from 'react';
+import React from 'react';
+import { useState, useEffect} from 'react';
 import { Navbar,Container,Nav,NavDropdown,Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Login from ".././auth/Login";
@@ -9,40 +10,50 @@ import DatePicker from "react-datepicker";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import Modal from 'react-modal';
-
+import IncrementButton from '.././quantity/IncrementButton';
+import DecrementButton from '.././quantity/DecrementButton';
+import Display from '.././quantity/display';
+//modal
 const customStyles = {
-	content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',	
-        overflow: 'auto',
-        transform: 'translate(-50%, -50%)',
-        padding: '0px',
-        border: '0',
-	},
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
   };
-
 const OrderTable = () => {
 
-    // modal
-    const [modalIsOpen, setIsOpen] = useState(false);
+    //số lượng tăng, giảm
+    const [counter, setCounter] = useState(1);
+  const incrementCounter = () => setCounter(counter + 1);
+  let decrementCounter = () => setCounter(counter - 1);
+  if(counter<=1) {
+    decrementCounter = () => setCounter(1);
+  }
+
+    //modal
+    const [modalIsOpen, setIsOpen] = React.useState(false);
 	function openModal() {
 		setIsOpen(true);
 	}
 	function closeModal() {
 		setIsOpen(false);
 	}
-    
-    // date
+
+
+    //date
     const [startDate, setStartDate] = useState(new Date());
     let handleColor = (time) => {
         return time.getHours() > 12 ? "text-success" : "text-error";
     };
 
 
+
     //foods
-const [orders, setOrder] = useState([
+    const [orders, setOrder] = useState([
     {
         id:1,
         title: 'Fried Chicken',
@@ -75,8 +86,8 @@ const [orders, setOrder] = useState([
     const displayOrder = orders
     .map((order) =>{
         return(
-         <>
-          <div className="row mt-3 border border-dark">
+        <>
+        <div className="row mt-3 border border-dark">
                             <div className="col-3">
                                 <img src={order.img} alt="" style={{width:'150px', height:'150px'}}/>
                             </div>
@@ -92,7 +103,50 @@ const [orders, setOrder] = useState([
                                 </p>
                             </div>
                             <div className="col-2 ">
-                                <FontAwesomeIcon icon={faCirclePlus} className="add_btn"/>
+                                <FontAwesomeIcon icon={faCirclePlus} className="add_btn" onClick={openModal}/>
+                                    <Modal
+                                    isOpen={modalIsOpen}
+                                    onRequestClose={closeModal}
+                                    style={customStyles}
+                                    contentLabel="Example Modal"
+                                    >
+
+                                    <button onClick={closeModal}>close</button>
+                                    <div className="container">
+                                    <div className="row">
+                                        <div className="col-12">
+                                            <div className="d-flex">
+                                                <div>
+                                                <div className="row px-4 py-4">
+                                                    <div className="col-3">
+                                                        <img src={order.img} alt="" style={{width:'150px', height:'150px'}}/>
+                                                    </div>
+                                                    <div className = "col-7 ms-5">
+                                                        <p className ="">
+                                                            {order.title}
+                                                        </p>
+                                                        <p className ="">
+                                                            {order.description}
+                                                        </p>
+                                                        <p className ="">
+                                                            {order.price}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div className="btnindes mt-4">
+                                                <IncrementButton onClickFunc={incrementCounter}/>
+                                                <Display message={counter}/> 
+                                                <DecrementButton onClickFunc={decrementCounter}/>   
+                                                </div>
+                                            </div>
+                                           
+
+                                    </div>
+                                    </div>
+                                    </div>
+                                    
+                                    </Modal>
                             </div>
                         </div>
 
@@ -152,14 +206,7 @@ const [drinks, setDrinks] = useState([
                                 </p>
                             </div>
                             <div className="col-2">
-                                <FontAwesomeIcon icon={faCirclePlus} className="add_btn" onClick={openModal} />
-                                <Modal
-                                    isOpen={modalIsOpen}
-                                    onRequestClose={closeModal}
-                                    style={customStyles}
-                                    contentLabel="Example Modal">
-                                    
-                                </Modal>
+                                <FontAwesomeIcon icon={faCirclePlus} className="add_btn" />
                             </div>
                         </div>
 
