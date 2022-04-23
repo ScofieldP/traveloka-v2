@@ -10,12 +10,37 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import Modal from 'react-modal';
 
+const customStyles = {
+	content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',	
+        overflow: 'auto',
+        transform: 'translate(-50%, -50%)',
+        padding: '0px',
+        border: '0',
+	},
+  };
 
 const OrderTable = () => {
+
+    // modal
+    const [modalIsOpen, setIsOpen] = useState(false);
+	function openModal() {
+		setIsOpen(true);
+	}
+	function closeModal() {
+		setIsOpen(false);
+	}
+    
+    // date
     const [startDate, setStartDate] = useState(new Date());
     let handleColor = (time) => {
         return time.getHours() > 12 ? "text-success" : "text-error";
     };
+
+
     //foods
 const [orders, setOrder] = useState([
     {
@@ -127,7 +152,14 @@ const [drinks, setDrinks] = useState([
                                 </p>
                             </div>
                             <div className="col-2">
-                                <FontAwesomeIcon icon={faCirclePlus} className="add_btn" />
+                                <FontAwesomeIcon icon={faCirclePlus} className="add_btn" onClick={openModal} />
+                                <Modal
+                                    isOpen={modalIsOpen}
+                                    onRequestClose={closeModal}
+                                    style={customStyles}
+                                    contentLabel="Example Modal">
+                                    
+                                </Modal>
                             </div>
                         </div>
 
