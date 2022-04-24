@@ -299,26 +299,72 @@ const [desserts, setDesserts] = useState([
     .map((dessert) =>{
         return(
         <>
-        <div className="row mt-3 border border-dark">
-                            <div className="col-3">         
-                                <img src={dessert.img} alt="" style={{width:'150px', height:'150px'}}/>
+        <div className="row mt-3 border border-dark rounded-3">
+                            <div className="col-3 p-0">
+                                <img src={dessert.img} alt="" style={{width:'180px', height:'180px'}}/>
                             </div>
                             <div className = "col-7">
-                                <p className ="">
+                                <div className="food_detail">
+                                <p className ="fw-bold fs-4">
                                     {dessert.title}
                                 </p>
-                                <p className ="">
+                                <p className ="mb-0">
                                     {dessert.description}
                                 </p>
-                                <p className ="">
+                                <p className ="m-0">
                                     {dessert.price}
                                 </p>
+                                <p><FontAwesomeIcon icon={faShoppingCart}  /> 100+</p>
+                                </div>
+                                
                             </div>
-                            <div className="col-2">
-                                <FontAwesomeIcon icon={faCirclePlus} className="add_btn" />
+                            <div className="col-2 ">
+                                <FontAwesomeIcon icon={faCirclePlus} className="add_btn" onClick={openModal}/>
+                                    <Modal
+                                    isOpen={modalIsOpen}
+                                    onRequestClose={closeModal}
+                                    style={customStyles}
+                                    contentLabel="Example Modal">
+                                    <button onClick={closeModal}>close</button>
+                                    <div className="container">
+                                    <div className="row border border-dark">
+                                        {/* Thêm vào giỏ hàng */}
+                                        <div className="col-9 ">
+                                                <div className="row px-4 py-4">
+                                                    <div className="col-3">
+                                                        <img src={dessert.img} alt="" style={{width:'150px', height:'150px'}}/>
+                                                    </div>
+                                                    <div className = "col-7 ms-5 mt-3">
+                                                    <p className ="fw-bold fs-4">
+                                                        {dessert.title}
+                                                    </p>
+                                                    <p className ="mb-0">
+                                                        {dessert.description}
+                                                    </p>
+                                                    <p className ="m-0">
+                                                        {dessert.price}
+                                                    </p>
+                                                    <p><FontAwesomeIcon icon={faShoppingCart}  /> 100+</p>
 
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div className="col-3 ">
+                                                <div className="btns">
+                                                <DecrementButton onClickFunc={decrementCounter}/> 
+                                                <Display message={counter}/> 
+                                                <IncrementButton onClickFunc={incrementCounter}/>  
+                                                </div>
+                                                
+                                            </div>
+                                            </div>
+                                    </div>
+                                    {/* Nút thêm */}
+                                    <button type="button" className="btn btn-primary w-100 mt-2">Thêm vào giỏ hàng</button>
+                                    </Modal>
                             </div>
-                        </div>
+        </div>
 
          </>   
         )
@@ -383,12 +429,12 @@ const [desserts, setDesserts] = useState([
                 <Col sm={9}>
                 <Tab.Content>
                     <Tab.Pane eventKey="first">
-                        <div className="container border border-dark">
-                            <div className="order_title border-0 border-bottom border-dark"> 
-                                <h4 className="text-center">Thêm đặt bàn</h4>
+                        <div className="container border border-dark border-end-0 border-bottom-0 border-top-0">
+                            <div className="order_title border-0 border-bottom border-dark "> 
+                                <h4 className="text-center py-2">Thêm đặt bàn</h4>
                             </div>
-                            <div className="form_tbl d-flex">
-                                <div className="col-6  border border-danger">
+                            <div className="form_tbl d-flex py-3">
+                                <div className="col-6">
                                     {/* Thời gian nhận bàn */}
                                     <div className="date_picker">
                                     <label for="datepicker" class="form-label">Thời gian nhận bàn</label>
@@ -420,7 +466,7 @@ const [desserts, setDesserts] = useState([
                                 </div>
 
                                 
-                                <div className="col-6 border border-warning">
+                                <div className="col-6 ms-3">
                                     {/* Số khách */}
                                     <div className="pick_table">
                                     <label for="datepicker" class="form-label">Số khách</label>
