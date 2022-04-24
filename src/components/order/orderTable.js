@@ -25,7 +25,7 @@ const customStyles = {
     },
   };
 const OrderTable = () => {
-
+    //thư mục quantity
     //số lượng tăng, giảm
     const [counter, setCounter] = useState(1);
   const incrementCounter = () => setCounter(counter + 1);
@@ -108,20 +108,17 @@ const OrderTable = () => {
                                     isOpen={modalIsOpen}
                                     onRequestClose={closeModal}
                                     style={customStyles}
-                                    contentLabel="Example Modal"
-                                    >
-
+                                    contentLabel="Example Modal">
                                     <button onClick={closeModal}>close</button>
                                     <div className="container">
-                                    <div className="row">
-                                        <div className="col-12">
-                                            <div className="d-flex">
-                                                <div>
+                                    <div className="row border border-dark">
+                                        {/* Thêm vào giỏ hàng */}
+                                        <div className="col-9 ">
                                                 <div className="row px-4 py-4">
                                                     <div className="col-3">
                                                         <img src={order.img} alt="" style={{width:'150px', height:'150px'}}/>
                                                     </div>
-                                                    <div className = "col-7 ms-5">
+                                                    <div className = "col-7 ms-5 mt-3">
                                                         <p className ="">
                                                             {order.title}
                                                         </p>
@@ -133,24 +130,25 @@ const OrderTable = () => {
                                                         </p>
                                                     </div>
                                                 </div>
-                                                </div>
-                                                <div className="btnindes mt-4">
-                                                <IncrementButton onClickFunc={incrementCounter}/>
-                                                <Display message={counter}/> 
-                                                <DecrementButton onClickFunc={decrementCounter}/>   
-                                                </div>
+                                                
                                             </div>
-                                           
-
+                                            <div className="col-3 ">
+                                                <div className="btns">
+                                                <DecrementButton onClickFunc={decrementCounter}/> 
+                                                <Display message={counter}/> 
+                                                <IncrementButton onClickFunc={incrementCounter}/>  
+                                                </div>
+                                                
+                                            </div>
+                                            </div>
                                     </div>
-                                    </div>
-                                    </div>
-                                    
+                                    {/* Nút thêm */}
+                                    <button type="button" className="btn btn-primary w-100 mt-2">Thêm vào giỏ hàng</button>
                                     </Modal>
                             </div>
                         </div>
 
-         </>   
+        </>   
         )
     });
 

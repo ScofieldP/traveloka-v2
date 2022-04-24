@@ -155,3 +155,9 @@
 .add_btn{
   margin-top: 60px;
 }
+.ReactModal__Content{
+  width: 50%;
+}
+.btns{
+  margin-top:70px;
+}
