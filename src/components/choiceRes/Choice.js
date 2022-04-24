@@ -139,7 +139,7 @@ function Choice () {
   .map((food) =>{
     return(
     <>
-    <div className="row border border-dark mt-3">
+    <div className="row border border-dark mt-3 rounded-3">
                         <div className="col-4 ps-0">
                         <img src={food.img} alt="" style={{width:'200px', height:'200px'}}/>
                         </div>
@@ -207,7 +207,7 @@ function Choice () {
         </section>
         <section className="main_container">
             <div className="search_res">
-                <div className="container w-75 shadow-lg px-4 mt-4">
+                <div className="container w-75 shadow-lg px-4 mt-4 ">
                     <div className="row">
                         <div className="col-4 mt-3">
                         <p>Location</p>

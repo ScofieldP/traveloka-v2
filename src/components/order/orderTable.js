@@ -14,6 +14,7 @@ import Modal from 'react-modal';
 import IncrementButton from '.././quantity/IncrementButton';
 import DecrementButton from '.././quantity/DecrementButton';
 import Display from '.././quantity/display';
+
 //modal
 const customStyles = {
     content: {
@@ -260,7 +261,7 @@ const [drinks, setDrinks] = useState([
                             </div>
         </div>
 
-         </>   
+        </>   
         )
     });
 
@@ -426,18 +427,20 @@ const [desserts, setDesserts] = useState([
                     </Nav.Item>
                 </Nav>
                 </Col>
-                <Col sm={9}>
+                <Col sm={9} className="bg-dark">
                 <Tab.Content>
+
+                    {/* Đặt bàn trước */}
                     <Tab.Pane eventKey="first">
                         <div className="container border border-dark border-end-0 border-bottom-0 border-top-0">
                             <div className="order_title border-0 border-bottom border-dark "> 
-                                <h4 className="text-center py-2">Thêm đặt bàn</h4>
+                                <h4 className="text-center py-2 font_title">Reservation</h4>
                             </div>
                             <div className="form_tbl d-flex py-3">
                                 <div className="col-6">
                                     {/* Thời gian nhận bàn */}
                                     <div className="date_picker">
-                                    <label for="datepicker" class="form-label">Thời gian nhận bàn</label>
+                                    <label for="datepicker" class="form-label text-white">Date & Time</label>
                                         <DatePicker
                                         showTimeSelect
                                         selected={startDate}
@@ -448,19 +451,19 @@ const [desserts, setDesserts] = useState([
                                     </div>
                                     {/* Số điện thoại */}
                                     <div className="phone_number mt-3">
-                                    <label for="datepicker" class="form-label">Số điện thoại</label>
+                                    <label for="datepicker" class="form-label text-white ">Your phone</label>
                                     <input type="text" class="form-control" placeholder="Số điện thoại"/>
                                     </div>
                                     
                                     {/* Chọn bàn */}
                                     <div className="pick_table mt-3">
-                                    <label for="datepicker" class="form-label">Chọn bàn</label>
-                                    <input type="text" class="form-control" placeholder="Số điện thoại"/>
+                                    <label for="datepicker" class="form-label text-white">Pick a table</label>
+                                    <input type="text" class="form-control text-white" placeholder="Số điện thoại"/>
                                     </div>
                                     
                                     {/* Đặt cọc trước */}
                                     <div className="pick_table mt-3">
-                                    <label for="datepicker" class="form-label">Đặt cọc trước</label>
+                                    <label for="datepicker" class="form-label text-white">Đặt cọc trước</label>
                                     <input type="text" class="form-control" placeholder="Đặt cọc trước"/>
                                     </div>
                                 </div>
@@ -469,25 +472,30 @@ const [desserts, setDesserts] = useState([
                                 <div className="col-6 ms-3">
                                     {/* Số khách */}
                                     <div className="pick_table">
-                                    <label for="datepicker" class="form-label">Số khách</label>
+                                    <label for="datepicker" class="form-label text-white">No of people</label>
                                     <input type="text" class="form-control" placeholder="Đặt cọc trước"/>
                                     </div>
 
                                     {/* Khách hàng */}
                                     <div className="pick_table mt-3">
-                                    <label for="datepicker" class="form-label">Khách hàng</label>
+                                    <label for="datepicker" class="form-label text-white">Your name</label>
                                     <input type="text" class="form-control" placeholder="Nhập tên khách hàng"/>
                                     </div>
 
                                     {/* Ghi chú */}
                                     <div className="pick_table mt-3">
-                                    <label for="datepicker" class="form-label">Ghi chú</label>
-                                    <input type="text" class="form-control" placeholder="Ghi chú"/>
+                                    <label for="datepicker" class="form-label text-white">Special Request</label>
+                                    <input type="text" class="form-control1 " placeholder="Ghi chú"/>
                                     </div>
                                 </div>
+
                             </div>
+                            <button type="button" class="btn btn-warning w-100 py-3 mt-3 ">BOOK NOW</button>
+
                         </div>
                     </Tab.Pane>
+
+                    {/* Đặt món trước */}
                     <Tab.Pane eventKey="second">
                         <div className="container border border-dark border-top-0 border-end-0">
                         <div className="order_title border-0 border-bottom border-dark"> 
@@ -503,7 +511,7 @@ const [desserts, setDesserts] = useState([
                                 {displayDrink}
                             </Tab>
                             <Tab eventKey="contact" title="Tráng miệng">
-                               {displayDesserts}
+                                {displayDesserts}
                             </Tab>
                         </Tabs>
                         </div>
@@ -512,6 +520,8 @@ const [desserts, setDesserts] = useState([
                         
                         </div>
                     </Tab.Pane>
+
+
                     <Tab.Pane eventKey="third">
                     </Tab.Pane>
                 </Tab.Content>

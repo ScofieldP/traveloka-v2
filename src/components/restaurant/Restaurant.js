@@ -50,7 +50,7 @@ export default function Restaurant() {
           <img src="/assets/img/background.png" alt="logo" />
         </div>
         <div className="search_bar">
-            <div className="container w-75 shadow-lg px-4 ">
+            <div className="container w-75 shadow-lg px-4 bg-white">
               <div className="row mt-3 py-4">
                 <p className="fs-1">Discover the amazing cuisine</p>
                 <div className="col-4 mt-1">

@@ -1,3 +1,7 @@
+*{
+  font-family:'Arial',sans-serif;
+}
+
 .authA{
   text-decoration: none;
   margin-right: 10px;
@@ -22,6 +26,8 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  transform: translateY(-20%);
 }
 .main_search{
   width:500px;
@@ -164,4 +170,29 @@
 .food_detail{
   margin-top:1.5rem;
   margin-left:20px;
+}
+
+.font_title{
+  font-family: 'Pacifico', cursive;
+  color:#FEA116 !important;
+}
+
+.form-control1{
+  display: block;
+    width: 100%;
+    padding: 3.1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn_book {
+  background-color: #FEA116;
+    border-color: #FEA116;
 }
