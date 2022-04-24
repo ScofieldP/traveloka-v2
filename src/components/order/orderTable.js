@@ -409,7 +409,7 @@ const [desserts, setDesserts] = useState([
                 </div>
         </section> 
 
-        <section className="main_table">
+        <section className="main_table py-5">
             <div className="container w-75 border border-dark">
             <Tab.Container id="left-tabs-example" defaultActiveKey="first">
             <Row>
@@ -491,7 +491,7 @@ const [desserts, setDesserts] = useState([
                     <Tab.Pane eventKey="second">
                         <div className="container border border-dark border-top-0 border-end-0">
                         <div className="order_title border-0 border-bottom border-dark"> 
-                            <h4 className="text-center">Đặt món trước</h4>
+                            <h4 className="text-center py-2">Đặt món trước</h4>
                             
                         </div>
                         <div className="">
