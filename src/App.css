@@ -153,11 +153,15 @@
   border-color:none;
 }
 .add_btn{
-  margin-top: 60px;
+  margin-top: 80px;
 }
 .ReactModal__Content{
   width: 50%;
 }
 .btns{
-  margin-top:70px;
+  margin-top:80px;
+}
+.food_detail{
+  margin-top:1.5rem;
+  margin-left:20px;
 }
