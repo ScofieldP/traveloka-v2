@@ -427,11 +427,11 @@ const [desserts, setDesserts] = useState([
                     </Nav.Item>
                 </Nav>
                 </Col>
-                <Col sm={9} className="bg-dark">
+                <Col sm={9} >
                 <Tab.Content>
 
                     {/* Đặt bàn trước */}
-                    <Tab.Pane eventKey="first">
+                    <Tab.Pane eventKey="first" className="bg-dark">
                         <div className="container border border-dark border-end-0 border-bottom-0 border-top-0">
                             <div className="order_title border-0 border-bottom border-dark "> 
                                 <h4 className="text-center py-2 font_title">Reservation</h4>
