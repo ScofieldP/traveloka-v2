@@ -9,9 +9,11 @@ import Choice from './components/choiceRes/Choice';
 import DetailRes from './components/choiceRes/DetailRes'
 import OrderFood from './components/order/orderFood'
 import OrderTable from './components/order/orderTable';
+import data from './components/fakeData/data'
 function App() {
+  const {products} = data;
   return (
-
+   
     <BrowserRouter>
     <Routes>
     <Route exact path='/' element={<Home />} />
@@ -20,7 +22,7 @@ function App() {
     <Route path='/restaurant' element={<Restaurant />} />
     <Route path='/choicerestaurant' element={<Choice />} />
     <Route path='/detailres' element={<DetailRes />} />
-    <Route path='/orderFood' element={<OrderFood />} />
+    <Route path='/orderFood' element={<OrderFood products ={products}/>} />
     <Route path='/orderTable' element={<OrderTable />} />
 
     </Routes>
