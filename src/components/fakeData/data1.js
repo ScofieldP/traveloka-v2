@@ -1,8 +1,8 @@
-const data ={
-    prodcts:[
+const data1 ={
+    products:[
         {
         id:1,
-        title: 'Fried Chicken',
+        title: 'Sting',
         description: 'Cho nhiều người',
         price: '500.000VND',
         img:"./assets/img/food-13.png",
@@ -30,4 +30,4 @@ const data ={
         },
     ],
 };
-export default data;
+export default data1;

@@ -10,8 +10,10 @@ import DetailRes from './components/choiceRes/DetailRes'
 import OrderFood from './components/order/orderFood'
 import OrderTable from './components/order/orderTable';
 import data from './components/fakeData/data'
+import data1 from './components/fakeData/data1'
 function App() {
-  const {products} = data;
+  const {prodcts} = data;
+  const {products} = data1;
   return (
    
     <BrowserRouter>
@@ -22,7 +24,7 @@ function App() {
     <Route path='/restaurant' element={<Restaurant />} />
     <Route path='/choicerestaurant' element={<Choice />} />
     <Route path='/detailres' element={<DetailRes />} />
-    <Route path='/orderFood' element={<OrderFood products ={products}/>} />
+    <Route path='/orderFood' element={<OrderFood products ={prodcts} drinks ={products}/>} />
     <Route path='/orderTable' element={<OrderTable />} />
 
     </Routes>

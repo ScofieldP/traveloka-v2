@@ -7,19 +7,20 @@ import Modal from 'react-modal';
 import IncrementButton from '.././quantity/IncrementButton';
 import DecrementButton from '.././quantity/DecrementButton';
 import Display from '.././quantity/display';
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
 
-export default function Food(props) {
-  //thư mục quantity
+
+const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
+export default function Water(props) {
+      //thư mục quantity
  //số lượng tăng, giảm
 const [counter, setCounter] = useState(1);
 const incrementCounter = () => setCounter(counter + 1);
@@ -37,20 +38,20 @@ function openModal() {
 function closeModal() {
   setIsOpen(false);
 }
-  const {product} = props;
-    return (
-      <div className="row mt-3 border border-dark rounded-3">
+    const {drink} = props;
+  return (
+    <div className="row mt-3 border border-dark rounded-3">
         <div className="col-3 p-0">
-          <img src={product.img} alt="" style={{width:'180px', height:'180px'}}/>
+          <img src={drink.img} alt="" style={{width:'180px', height:'180px'}}/>
         </div>
           <div className = "col-7">
             <div className="food_detail">
               {/* Tên món ăn */}
-            <p className ="fw-bold fs-4">{product.title}</p>
+            <p className ="fw-bold fs-4">{drink.title}</p>
             {/* Mô tả */}
-          <p className ="mb-0">{product.description}</p>
+          <p className ="mb-0">{drink.description}</p>
           {/* Giá tiền */}
-          <p className ="m-0">{product.price}</p>
+          <p className ="m-0">{drink.price}</p>
           <p><FontAwesomeIcon icon={faShoppingCart}  /> 100+</p>
             </div>
               
@@ -69,17 +70,17 @@ function closeModal() {
             <div className="col-9 ">
               <div className="row px-4 py-4">
                   <div className="col-3">
-                      <img src={product.img} alt="" style={{width:'150px', height:'150px'}}/>
+                      <img src={drink.img} alt="" style={{width:'150px', height:'150px'}}/>
                   </div>
                   <div className = "col-7 ms-5 mt-3">
                       <p className ="fs-4 fw-bold">
-                          {product.title}
+                          {drink.title}
                       </p>
                       <p className ="mb-0">
-                          {product.description}
+                          {drink.description}
                       </p>
                       <p className ="m-0">
-                          {product.price}
+                          {drink.price}
                       </p>
                   </div>
               </div>    
@@ -99,6 +100,5 @@ function closeModal() {
         </Modal>
       </div>
       </div>  
-                              
   )
 }
