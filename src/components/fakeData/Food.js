@@ -68,20 +68,29 @@ function closeModal() {
             {/* Thêm vào giỏ hàng */}
             <div className="col-9 ">
               <div className="row px-4 py-4">
-                  <div className="col-3">
-                      <img src={product.img} alt="" style={{width:'150px', height:'150px'}}/>
-                  </div>
-                  <div className = "col-7 ms-5 mt-3">
+                {
+                  product.details && product.details.map(detail=>{
+                    return(
+                      <>
+                      <div className="col-3">
+                        <img src={detail.img} alt="" style={{width:'150px', height:'150px'}}/>
+                      </div>
+                      <div className = "col-7 ms-5 mt-3">
                       <p className ="fs-4 fw-bold">
-                          {product.title}
-                      </p>
-                      <p className ="mb-0">
-                          {product.description}
+                          {detail.detailTitle}
                       </p>
                       <p className ="m-0">
-                          {product.price}
+                          {detail.price}
                       </p>
                   </div>
+                      </>
+                      
+                      
+                    )
+                  })
+                }
+                  
+                  
               </div>    
                 </div>
                 <div className="col-3 ">

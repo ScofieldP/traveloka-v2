@@ -6,7 +6,16 @@ const data ={
         description: 'Cho nhiều người',
         price: '500.000VND',
         img:"./assets/img/food-13.png",
+        details:[
+            {
+                id:1,
+                detailTitle: 'Gà chiên nước mắm',
+                price:'300.000VND',
+                img:"./assets/img/food-13.png",
+            }
+        ]
         },
+
         {
         id:2,
         title: 'Fried Chicken',
