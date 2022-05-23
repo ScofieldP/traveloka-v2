@@ -32,6 +32,18 @@ function App() {
       setCartItems([...cartItems, { ...product, qty:1}]);
     }
   };
+  const onRemove = (product) =>{
+    const exist = cartItems.find(x=>x.id === product.id);
+    if (exist.qty === 1 ){
+      setCartItems(cartItems.filter((x)=>x.id !== product.id));
+    } 
+    else{
+      setCartItems(cartItems.map ((x)=>
+      x.id ===product.id ? { ...exist, qty: exist.qty-1} :x
+      )
+      );
+    }
+  }
   return (
    
     <BrowserRouter>
@@ -42,7 +54,12 @@ function App() {
     <Route path='/restaurant' element={<Restaurant />} />
     <Route path='/choicerestaurant' element={<Choice restaurants = {restaurants}/>} />
     <Route path='/detailres' element={<DetailRes />} />
-    <Route path='/orderFood' element={<OrderFood onAdd = {onAdd} products ={prodcts} drinks ={products} cartItems ={cartItems} />} />
+    <Route path='/orderFood' element={<OrderFood 
+                                          onAdd = {onAdd} 
+                                          onRemove = {onRemove}
+                                          products ={prodcts} 
+                                          drinks ={products} 
+                                          cartItems ={cartItems} />} />
     <Route path='/orderTable' element={<OrderTable />} />
     <Route path='/test' element={<Test />} />
     </Routes>

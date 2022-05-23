@@ -10,13 +10,13 @@ const data ={
             {
                 id:1,
                 detailTitle: 'Gà chiên nước mắm',
-                price:'300.000VND',
+                price:1400,
                 img:"./assets/img/food-13.png",
             },
             {
                 id:2,
                 detailTitle: 'Gà nướng muối xả',
-                price:'400.000VND',
+                price:1400,
                 img:"./assets/img/food-13.png",
 
               

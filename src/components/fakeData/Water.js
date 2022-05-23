@@ -4,9 +4,7 @@ import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import { faShoppingCart} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Modal from 'react-modal';
-import IncrementButton from '.././quantity/IncrementButton';
-import DecrementButton from '.././quantity/DecrementButton';
-import Display from '.././quantity/display';
+
 
 
 const customStyles = {
@@ -20,14 +18,7 @@ const customStyles = {
     },
   };
 export default function Water(props) {
-      //thư mục quantity
- //số lượng tăng, giảm
-const [counter, setCounter] = useState(1);
-const incrementCounter = () => setCounter(counter + 1);
-let decrementCounter = () => setCounter(counter - 1);
-if(counter<=1) {
- decrementCounter = () => setCounter(1);
-}
+
 
 
 //modal
@@ -86,14 +77,7 @@ function closeModal() {
                   </div>
               </div>    
                 </div>
-                <div className="col-3 ">
-                    <div className="btns">
-                    <DecrementButton onClickFunc={decrementCounter}/> 
-                    <Display message={counter}/> 
-                    <IncrementButton onClickFunc={incrementCounter}/>  
-                    </div>
-                    
-                </div>
+              
                 </div>
         </div>
         {/* Nút thêm */}

@@ -11,9 +11,13 @@ export default function OrderFood  (props) {
     isPaneOpen: false,
     isPaneOpenLeft: false,
   });
-    const {products,onAdd} = props;
+    const {products,onAdd, onRemove} = props;
+   
     const {drinks} = props;
     const {cartItems} =props;
+    const itemsPrice  = cartItems.reduce((a, c)=> a +c.price * c.qty,0);
+    const shippingPrice = itemsPrice < 2000 ? 0:50;
+    const totalPrice = itemsPrice + shippingPrice;
     return (
         <>
         <Header/>
@@ -44,10 +48,22 @@ export default function OrderFood  (props) {
               <div>{item.detailTitle}</div>
               <div>
                 <button onClick={()=>onAdd(item)} className = "add">+</button>
-   
+                <button onClick={()=>onRemove(item)} className = "remove">-</button>
+
+              </div>
+
+              <div>
+                {item.qty} x {item.price}
               </div>
             </div>
           ))}
+          {cartItems.length !==0 &&(
+            <>
+            <div>{itemsPrice}</div>
+            <div>{shippingPrice}</div>
+            <div>{totalPrice}</div>
+            </>
+          )}
         </SlidingPane>  
           </div>
         <Tabs id="controlled-tab-example" className="mb-3 justify-content-center">
