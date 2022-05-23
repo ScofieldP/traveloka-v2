@@ -38,6 +38,8 @@ function openModal() {
 function closeModal() {
   setIsOpen(false);
 }
+
+// 
     const {drink} = props;
   return (
     <div className="row mt-3 border border-dark rounded-3">
@@ -54,8 +56,7 @@ function closeModal() {
           <p className ="m-0">{drink.price}</p>
           <p><FontAwesomeIcon icon={faShoppingCart}  /> 100+</p>
             </div>
-              
-      </div>
+          </div>
       <div className="col-2 ">
           <FontAwesomeIcon icon={faCirclePlus} className="add_btn" onClick={openModal}/>
         <Modal

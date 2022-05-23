@@ -112,8 +112,8 @@
 }
 
 .bread_crum{
-  margin-top:80px;
-  margin-bottom:50px;
+  margin-top:50px;
+  margin-bottom:30px;
 }
 .react-datepicker-ignore-onclickoutside{
   display: block;
@@ -162,7 +162,7 @@
   margin-top: 80px;
 }
 .ReactModal__Content{
-  width: 50%;
+  width: 90%;
 }
 .btns{
   margin-top:80px;
@@ -198,4 +198,9 @@
 }
 .btn_add{
   margin-top:50px;
+}
+
+.authc{
+  text-decoration: none;
+  color: black;
 }

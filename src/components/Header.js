@@ -1,6 +1,5 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
-import { Navbar,Container,Nav,NavDropdown,Carousel } from 'react-bootstrap';
+import { Navbar,Container,Nav,NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Login from "././auth/Login";
 import Register from './auth/Register';
@@ -8,8 +7,8 @@ import Register from './auth/Register';
 const Header = () => {
     return (
         <section className="header">
-        <div class="container">
-        <div class="row mt-2 ">
+        <div className="container">
+        <div className="row mt-2 ">
             <div className="d-flex justify-content-between  ">
             <div className="logo_img ">
                 <img src="/assets/img/logo.png" alt="logo" />

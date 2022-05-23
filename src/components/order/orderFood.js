@@ -1,25 +1,61 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Tab, Tabs} from 'react-bootstrap'
 import Food from '../fakeData/Food'
 import Water from '../fakeData/Water'
 import Header from '../Header';
+import SlidingPane from "react-sliding-pane";
+import "react-sliding-pane/dist/react-sliding-pane.css";
 
 export default function OrderFood  (props) {
-    const {products} = props;
+  const [state, setState] = useState({
+    isPaneOpen: false,
+    isPaneOpenLeft: false,
+  });
+    const {products,onAdd} = props;
     const {drinks} = props;
+    const {cartItems} =props;
     return (
         <>
         <Header/>
 
         <section className="main_container">
         <div className="container">
-          <h2 className="text-center my-5 font_title">  Our Restaurant Menu</h2>
+          <div className="d-flex justify-content-center">
+          <h2 className="text-center my-5 font_title"> Menu nhà hàng</h2>
+          <p onClick={() => setState({ isPaneOpen: true })} className="text-center my-5 ">Giỏ hàng</p>
+          <SlidingPane
+          className="some-custom-class"
+          overlayClassName="some-custom-overlay-class"
+          isOpen={state.isPaneOpen}
+          title="Hey, it is optional pane title.  I can be React component too."
+          subtitle="Optional subtitle."
+          width = '40%'
+          onRequestClose={() => {
+            // triggered on "<" on left top click or on outside click
+            setState({ isPaneOpen: false });
+          }}
+        >
+          <div>{cartItems.length ===0 &&<div>Giỏ hàng trống</div>}</div>
+          {cartItems.map((item)=>(
+            <div key={item.id} className="row">
+              <div>
+                <img src={item.img} alt=""/>
+              </div>
+              <div>{item.detailTitle}</div>
+              <div>
+                <button onClick={()=>onAdd(item)} className = "add">+</button>
+   
+              </div>
+            </div>
+          ))}
+        </SlidingPane>  
+          </div>
         <Tabs id="controlled-tab-example" className="mb-3 justify-content-center">
           <Tab eventKey="food" title="Food">
             <div className="row">
             <div className="col-6">
                 {products.map((product)=>(
-                  <Food key={product.id} product={product} />
+                  <Food key={product.id} product={product} onAdd = {onAdd} />
                 ))}
               </div>
               <div className ="col-6">
@@ -31,8 +67,8 @@ export default function OrderFood  (props) {
 
           </Tab>
           <Tab eventKey="drink" title="Drink">
-          <div className="row">
-            <div className="col-6">
+            <div className="row">
+              <div className="col-6">
             {drinks.map((drink)=>(
                   <Water key={drink.id} drink={drink} />
                 ))}
