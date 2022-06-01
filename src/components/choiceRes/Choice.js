@@ -63,8 +63,8 @@ export default function Choice (props) {
             <div className="container w-75  ">
             <div className="row">
                 <div className ="col-2 border border-dark " style={{height:"100px"}}>
-                    aksdjhaklsjdlaksd
               </div>
+
 
               <div className="col-8 ms-5">
               <div className="Choice">

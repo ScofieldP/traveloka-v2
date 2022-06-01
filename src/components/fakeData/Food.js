@@ -78,7 +78,11 @@ function closeModal() {
                             </div>
                           </div>
                           <div className="col-2 ">
-                            <button onClick = {() => onAdd(detail)}>Add</button>
+                            <FontAwesomeIcon 
+                              icon={faCirclePlus} 
+                              className="add_btn"
+                              onClick = {() => onAdd(detail)}/>
+
                             </div>
                         </div>
                       </>

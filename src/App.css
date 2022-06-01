@@ -204,3 +204,7 @@
   text-decoration: none;
   color: black;
 }
+.dright{
+  position: absolute;
+  right:109px;
+}

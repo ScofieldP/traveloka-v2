@@ -5,6 +5,8 @@ import Water from '../fakeData/Water'
 import Header from '../Header';
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
+import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function OrderFood  (props) {
   const [state, setState] = useState({
@@ -24,14 +26,18 @@ export default function OrderFood  (props) {
 
         <section className="main_container">
         <div className="container">
-          <div className="d-flex justify-content-center">
+          <div className="d-flex justify-content-center ">
           <h2 className="text-center my-5 font_title"> Menu nhà hàng</h2>
-          <p onClick={() => setState({ isPaneOpen: true })} className="text-center my-5 ">Giỏ hàng</p>
+          <FontAwesomeIcon 
+            icon={faShoppingCart}  
+            onClick={() => setState({ isPaneOpen: true })} 
+            className=" my-5 dright "
+            style={{height:'35px', color:'#FEA116'}} ></FontAwesomeIcon> 
           <SlidingPane
           className="some-custom-class"
           overlayClassName="some-custom-overlay-class"
           isOpen={state.isPaneOpen}
-          title="Hey, it is optional pane title.  I can be React component too."
+          title="Giỏ hàng"
           subtitle="Optional subtitle."
           width = '40%'
           onRequestClose={() => {
