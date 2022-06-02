@@ -15,9 +15,9 @@ export default function Restaurant() {
         <div className="search_bar">
           <div className="container w-75 shadow-lg px-4 bg-white">
             <div className="row mt-3 py-4">
-              <p className="fs-1">Khám phá Nền ẩm thực tuyệt vời</p>
+              <p className="fs-1">Khám phá nền ẩm thực đa dạng và phong phú</p>
               <div className="col-4 mt-1">
-                <p>Location</p>
+                <p>Địa điểm</p>
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1">
                     <FontAwesomeIcon icon={faLocationDot} />
@@ -50,15 +50,22 @@ export default function Restaurant() {
             <div className="btn_search  d-flex justify-content-end">
               <button type="button" class="btn btn-warning btn-md my-4 ">
                 <FontAwesomeIcon icon={faSearch} className="me-2" />
-                Search
+                Tìm kiếm
               </button>
             </div>
           </div>
         </div>
         <div className="about_area">
-          <div className="container">
+          
+          <div className="container " style={{borderRadius:'15px', backgroundColor:'antiquewhite'}}>
+          <div class="content_top mt-3">
+                <div class="heading">
+                    <h2 class="text-center py-4 fw-bold ">ĐÔI NÉT VỀ TRAVELOKA</h2>
+                </div>
+
+            </div>
             <div className="row">
-              <div className="col-xl-7 col-lg-7">
+              <div className="col7 col-lg-7">
                 <div className="about_thumb d-flex">
                   <div className="img_1">
                     <img
@@ -76,7 +83,7 @@ export default function Restaurant() {
                   </div>
                 </div>
               </div>
-              <div className="col-xl-5 col-lg-5">
+              <div className="col-5 border border-dark">
                 <div className="about_info">
                   <div className="section_title ">
                     <span className="mb-3">
@@ -85,23 +92,31 @@ export default function Restaurant() {
                       </i>
                     </span>
                     <h3 className="mt-3 fs-2">
-                      Sự hài lòng của bạn là niềm TỰ HÀO và MỤC TIÊU của chúng
-                      tôi
+                      Sự hài lòng của bạn là niềm <br/>  <b style={{color:'#51BBED'}}>TỰ HÀO</b>  và  <b style={{color:'#51BBED'}}>MỤC TIÊU</b> của <b style={{color:'#51BBED'}}>Traveloka</b>
+                      
                     </h3>
                   </div>
-                  <p className="mt-3">
-                    Chúng tôi - Những con người cùng chí hướng, mục tiêu và hoài
-                    bão đem đến sự phục vụ tinh tế, sự trải nghiệm hoàn hảo.
-                    Nhanh - đơn giản - tiện lợi - an toàn là Những tiêu chí hàng
-                    đầu mà chúng tôi hướng đến. Hãy để chúng tôi - Traveloka
-                    Đồng hành cùng bữa cơm của các bạn.
-                    <br /> <h4>-Traveloka - Người bạn của sự an toàn-</h4>
+                  <p className="mt-3 ">
+                    <b style={{color:'#51BBED'}}>Traveloka</b> - Đem đến cho khách hàng những dịch vụ tốt nhất
+                    <ul className="fs-5">
+                      <li>Phục vụ tinh tế, sự trải nghiệm hoàn hảo</li>
+                      <li> Nhanh - đơn giản - tiện lợi - an toàn</li>
+                    </ul>
+                    
+                    <p className="fs-5"> Đây là những tiêu chí hàng
+                    đầu mà chúng tôi hướng đến.</p>
+                    <p className="fs-5">Hãy để <b style={{color:'#51BBED'}}>Traveloka</b> - Dịch vụ
+                    đồng hành cùng những bữa ăn của bạn.</p>
+                   <h4 style={{color:'#51BBED', fontWeight:'bold'}}className="d-flex justify-content-end">Traveloka - Người bạn của sự an toàn</h4>
                   </p>
-                  <a href="#" className="line-button">
+                  <h5 href="#" className="line-button d-flex justify-content-end "style={{color:'#51BBED', fontWeight:'bold', cursor: 'pointer'}}>
                     Tìm hiểu thêm
-                  </a>
+                  </h5>
                 </div>
               </div>
+            </div>
+            <div class=" d-flex justify-content-center py-5 ">
+               
             </div>
           </div>
         </div>
@@ -114,31 +129,36 @@ export default function Restaurant() {
                 <div class="row row-cols-2 row-cols-lg-3 g-2 g-lg-3">
                   <div class="col">
                     <img
-                      src="/assets/img/nuocmia.jfif"
+                      src="/assets/img/nuocmia.jpg"
                       alt="logo"
                       style={{ width: "160px", height: "120px" }}
                     />
                     <p className="fw-bold">Nước mía </p>
                   </div>
                   <div class="col">
-                    <img src="/assets/img/food-4.png" alt="logo" />
-                    <p className="fw-bold">Vietnamese</p>
+                    <img src="/assets/img/caphetrung.jpg" alt="logo" 
+                    style={{ width: "160px", height: "120px" }}/>
+                    <p className="fw-bold">Cà phê trứng</p>
+                    
                   </div>
                   <div class="col">
-                    <img src="/assets/img/food-5.png" alt="logo" />
-                    <p className="fw-bold">Coffee & Tea</p>
+                    <img src="/assets/img/cari.jpg" alt="logo" 
+                    style={{ width: "160px", height: "120px" }}/>
+                    <p className="fw-bold">Cà ri</p>
                   </div>
                   <div class="col">
                     <img src="/assets/img/food-7.png" alt="logo" />
-                    <p className="fw-bold">Western</p>
+                    <p className="fw-bold">Hamburger</p>
                   </div>
                   <div class="col">
-                    <img src="/assets/img/food-8.png" alt="logo" />
-                    <p className="fw-bold">Asian</p>
+                    <img src="/assets/img/sapagetti.jpg" alt="logo"
+                    style={{ width: "160px", height: "120px" }} />
+                    <p className="fw-bold">Sapagetti</p>
                   </div>
                   <div class="col">
-                    <img src="/assets/img/food-6.png" alt="logo" />
-                    <p className="fw-bold">Desert</p>
+                    <img src="/assets/img/pizza.jpg" alt="logo"
+                    style={{ width: "160px", height: "120px" }}  />
+                    <p className="fw-bold">Pizza</p>
                   </div>
                 </div>
               </div>
