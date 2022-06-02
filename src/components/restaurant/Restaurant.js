@@ -110,15 +110,15 @@ export default function Restaurant() {
             <div className="row ">
               <p className="text-center fs-3 fw-bold">Nét riêng Việt Nam</p>
               <div className="col-6">
-                <p className="fs-4 fw-bold">Ẩm thực nỗi tiếng</p>
+                <p className="fs-4 fw-bold">Ẩm thực nổi tiếng</p>
                 <div class="row row-cols-2 row-cols-lg-3 g-2 g-lg-3">
                   <div class="col">
                     <img
-                      src="/assets/img/food-3.png"
+                      src="/assets/img/nuocmia.jfif"
                       alt="logo"
                       style={{ width: "160px", height: "120px" }}
                     />
-                    <p className="fw-bold">Drinks </p>
+                    <p className="fw-bold">Nước mía </p>
                   </div>
                   <div class="col">
                     <img src="/assets/img/food-4.png" alt="logo" />
@@ -147,47 +147,51 @@ export default function Restaurant() {
                 <div class="row row-cols-2 row-cols-lg-3 g-2 g-lg-3">
                   <div class="col">
                     <img
-                      src="/assets/img/food-9.png"
+                      src="/assets/img/pho.jpg"
                       alt="logo"
                       style={{ width: "160px", height: "120px" }}
                     />
-                    <p className="fw-bold">Fried Chicken</p>
+                    <p className="fw-bold">Phở</p>
                   </div>
                   <div class="col">
                     <img
-                      src="/assets/img/food-10.png"
+                      src="/assets/img/hutieu.jpg"
                       alt="logo"
                       style={{ width: "160px", height: "120px" }}
                     />
-                    <p className="fw-bold">Noodles</p>
+                    <p className="fw-bold">Hủ tiếu</p>
                   </div>
                   <div class="col">
                     <img
-                      src="/assets/img/food-11.png"
+                      src="/assets/img/comtam.jpg"
                       alt="logo"
                       style={{ width: "160px", height: "120px" }}
                     />
-                    <p className="fw-bold">Fried Rice</p>
+                    <p className="fw-bold">Cơm tấm</p>
                   </div>
                   <div class="col">
                     <img
-                      src="/assets/img/food-12.png"
+                      src="/assets/img/banhmi.jpg"
                       alt="logo"
                       style={{ width: "160px", height: "120px" }}
                     />
-                    <p className="fw-bold">Beverages</p>
+                    <p className="fw-bold">Bánh mì</p>
                   </div>
                   <div class="col">
                     <img
-                      src="/assets/img/food-13.png"
+                      src="/assets/img/banhcuon.jpg"
                       alt="logo"
                       style={{ width: "160px", height: "120px" }}
                     />
-                    <p className="fw-bold">Cakes</p>
+                    <p className="fw-bold">Bánh cuốn</p>
                   </div>
                   <div class="col">
-                    <img src="/assets/img/food-5.png" alt="logo" />
-                    <p className="fw-bold">Coffee</p>
+                    <img
+                      src="/assets/img/bunbo.jpg"
+                      alt="logo"
+                      style={{ width: "160px", height: "120px" }}
+                    />
+                    <p className="fw-bold">Bún bò</p>
                   </div>
                 </div>
               </div>

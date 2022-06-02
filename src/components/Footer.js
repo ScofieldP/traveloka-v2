@@ -2,161 +2,122 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <section className="footer mt-5">    
-        <footer className="bg-dark text-center text-white"> 
-          <div className="container p-4">
-            <section className="mb-4">
-      <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i className="fab fa-facebook-f"></i></a>
-      <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i className="fab fa-twitter"></i></a>
+      <section className="footer mt-5">
 
      
-      <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i className="fab fa-google"></i
-      ></a>
-
-     
-      <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i className="fab fa-instagram"></i
-      ></a>
-
-     
-      <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i className="fab fa-linkedin-in"></i
-      ></a>
-
-     
-      <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i className="fab fa-github"></i
-      ></a>
-    </section>
-   
-    <section className="">
-      <form action="">
-     
-        <div className="row d-flex justify-content-center">
-         
-          <div className="col-auto">
-            <p className="pt-2">
-              <strong>Sign up for our newsletter</strong>
-            </p>
-          </div>
-       
-          <div className="col-md-5 col-12">
-           
-            <div className="form-outline form-white mb-4">
-              <input type="email" id="form5Example21" className="form-control" />
-              <label className="form-label" for="form5Example21">Email address</label>
-            </div>
-          </div>
-       
-          <div className="col-auto">
-            
-            <button type="submit" className="btn btn-outline-light mb-4">
-              Subscribe
-            </button>
-          </div>
+      <footer className="text-center text-lg-start text-white"
+              style={{backgroundColor:'#1c2331' }}>
           
-        </div>
-       
-      </form>
-    </section>
-   
-    <section className="mb-4">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-        eum harum corrupti dicta, aliquam sequi voluptate quas.
-      </p>
-    </section>
-  
-   
-    <section className="">
+          <section className="d-flex justify-content-between p-4 " style={{backgroundColor: '#51BBED'}} >
+            
+              <div className="me-5">
+                  <span>Kết nối cùng chúng tôi trên các nền tảng mạng xã hội: </span>
+              </div>
+              
+              <div>
+                  <a href="#" className="text-white me-4">
+                      <i className="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="" className="text-white me-4">
+                      <i className="fab fa-twitter"></i>
+                  </a>
+                  <a href="" className="text-white me-4">
+                      <i className="fab fa-google"></i>
+                  </a>
+                  <a href="" className="text-white me-4">
+                      <i className="fab fa-instagram"></i>
+                  </a>
+                  <a href="" className="text-white me-4">
+                      <i className="fab fa-linkedin"></i>
+                  </a>
+                  <a href="" className="text-white me-4">
+                      <i className="fab fa-github"></i>
+                  </a>
+              </div>
+            
+          </section>
       
-      <div className="row">
-    
-        <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 className="text-uppercase">About us</h5>
+          <section className="">
+              <div className="container text-center text-md-start mt-5">
+              
+                  <div className="row mt-3">
+                    
+                      <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                   
+                          <h6 className="text-uppercase fw-bold">VY2 - 08</h6>
+                          <hr className="mb-4 mt-0 d-inline-block mx-auto"
+                              style={{width: '60px', backgroundColor: '#7c4dff', height: '2px'}} />
+                          <ul>
+                              <li>Lương Trần Thiên Phúc</li>
+                              <li>Lê Hải Triều</li>
+                              <li>Đào Toàn Thắng</li>
+                          </ul>
+                      </div>
+                      
+                      <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        
+                          <h6 className="text-uppercase fw-bold">Dịch vụ</h6>
+                          <hr className="mb-4 mt-0 d-inline-block mx-auto"
+                              style={{width: '60px', backgroundColor: '#7c4dff', height: '2px'}} />
+                          <p>
+                              <a href="#!" className="text-white text-decoration-none">Nhà hàng</a>
+                          </p>
+                          <p>
+                              <a href="#!" className="text-white text-decoration-none">Đặt vé máy bay</a>
+                          </p>
+                          <p>
+                              <a href="#!" className="text-white text-decoration-none">Đặt khách sạn</a>
+                          </p>
+                          <p>
+                              <a href="#!" className="text-white text-decoration-none">Gift Voucher</a>
+                          </p>
+                      </div>
+                     
+                      <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                         
+                          <h6 className="text-uppercase fw-bold">Hỗ trợ</h6>
+                          <hr className="mb-4 mt-0 d-inline-block mx-auto"
+                              style={{width: '60px', backgroundColor: '#7c4dff', height: '2px'}} />
+                          <p>
+                              <a href="#!" className="text-white text-decoration-none">Chính sách quyền riêng tư</a>
+                          </p>
+                          <p>
+                              <a href="#!" className="text-white text-decoration-none">Traveloka Blog</a>
+                          </p>
+                          <p>
+                              <a href="#!" className="text-white text-decoration-none">Điều khoản & điều kiện</a>
+                          </p>
+                          <p>
+                              <a href="#!" className="text-white text-decoration-none">Gứi góp ý - khiếu nại</a>
+                          </p>
+                      </div>
+                     
+                      <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                         
+                          <h6 className="text-uppercase fw-bold">Liên hệ</h6>
+                          <hr className="mb-4 mt-0 d-inline-block mx-auto"
+                              style={{width: '60px', backgroundColor: '#7c4dff', height: '2px'}} />
+                          <p><i className="fas fa-home mr-3"></i> HUFLIT University</p>
+                          <p><i className="fas fa-envelope mr-3"></i> vy08@gmail.com</p>
+                          <p><i className="fas fa-phone mr-3"></i> + 078 346 7852</p>
+                          <p><i className="fas fa-print mr-3"></i> + 058 257 5704</p>
+                      </div>
+                     
+                  </div>
+             
+              </div>
+          </section>
 
-          <ul className="list-unstyled mb-0">
-            <li>
-              <a href="#!" className="text-white">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" className="text-white">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" className="text-white">Link 3</a>
-            </li>
-            <li>
-              <a href="#!" className="text-white">Link 4</a>
-            </li>
-          </ul>
-        </div>
-       
-        <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 className="text-uppercase">Product</h5>
+          <div className="text-center p-3"
+               >
+              <p>&copy; Lương Trần Thiên Phúc - Lê Hải Triều - Đào Toàn Thắng</p>
+          </div>
 
-          <ul className="list-unstyled mb-0">
-            <li>
-              <a href="#!" className="text-white">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" className="text-white">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" className="text-white">Link 3</a>
-            </li>
-            <li>
-              <a href="#!" className="text-white">Link 4</a>
-            </li>
-          </ul>
-        </div>
-       
-        <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 className="text-uppercase">Others</h5>
+      </footer>
 
-          <ul className="list-unstyled mb-0">
-            <li>
-              <a href="#!" className="text-white">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" className="text-white">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" className="text-white">Link 3</a>
-            </li>
-            <li>
-              <a href="#!" className="text-white">Link 4</a>
-            </li>
-          </ul>
-        </div>
 
-        <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 className="text-uppercase">Payment Partners</h5>
 
-          <ul className="list-unstyled mb-0">
-            <li>
-              <a href="#!" className="text-white">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" className="text-white">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" className="text-white">Link 3</a>
-            </li>
-            <li>
-              <a href="#!" className="text-white">Link 4</a>
-            </li>
-          </ul>
-        </div>
-      
-      </div>
-    
-    </section>
-    
-  </div>
-</footer>
-      </section>
+  </section>
     );
 }
 
