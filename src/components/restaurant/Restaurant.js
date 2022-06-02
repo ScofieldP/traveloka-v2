@@ -83,7 +83,7 @@ export default function Restaurant() {
                   </div>
                 </div>
               </div>
-              <div className="col-5 border border-dark">
+              <div className="col-5 border border-dark bg-white">
                 <div className="about_info">
                   <div className="section_title ">
                     <span className="mb-3">
