@@ -12,7 +12,6 @@ const Header = () => {
             <div className="d-flex justify-content-between  ">
             <div className="logo_img ">
                 <img src="/assets/img/logo.png" alt="logo" />
-
             </div>
             <div className="auth ">
             <Link className="authA" to ="/login" element={ <Register/>}>Tạo tài khoản</Link>
