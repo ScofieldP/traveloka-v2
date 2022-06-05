@@ -30,7 +30,7 @@ const Restaurant = () => {
           CONNECTION_STRING + "/search/restaurant",
           resData
         );
-        localStorage.setItem("res", JSON.stringify(res.data));
+        localStorage.setItem("res", JSON.stringify(res.data.rows));
       } catch (err) {
         if (err.response && err.response.data.errorMessage)
           setErrorMessage(err.response.data.errorMessage);
@@ -43,7 +43,7 @@ const Restaurant = () => {
           CONNECTION_STRING + `/search/food`,
           foodData
         );
-        localStorage.setItem("food", JSON.stringify(food.data));
+        localStorage.setItem("food", JSON.stringify(food.data.rows));
       } catch (err) {
         if (err.response && err.response.data.errorMessage)
           setErrorMessage(err.response.data.errorMessage);

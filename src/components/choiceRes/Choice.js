@@ -9,15 +9,16 @@ import Place from "../fakeData/Place";
 
 export default function Choice(props) {
   //fake DB
-
-  const { restaurants } = props;
+  const restaurants = !localStorage.res ? "" : JSON.parse(localStorage.res);
+  //console.log(restaurants);
+  //const { restaurants } = props;
   const [pageNumber, setPageNumber] = useState(0);
   const usersPerPage = 3; //set số lượng item
   const pageVisited = pageNumber * usersPerPage;
   const displayUsers = restaurants
     .slice(pageVisited, pageVisited + usersPerPage)
     .map((restaurant) => {
-      return <Place key={restaurant.id} restaurant={restaurant} />;
+      return <Place restaurant={restaurant} />;
     });
   const pageCount = Math.ceil(restaurants.length / usersPerPage);
   const changePage = ({ selected }) => {
