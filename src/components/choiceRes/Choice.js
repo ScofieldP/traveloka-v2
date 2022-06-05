@@ -5,7 +5,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import ReactPaginate from "react-paginate";
 import Header from "../Header";
 import Footer from "../Footer";
-import Place from "../fakeData/Place";
+import Place from "./Place";
 
 export default function Choice(props) {
   //fake DB
