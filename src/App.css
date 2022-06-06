@@ -26,7 +26,6 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  position: relative;
 }
 .main_search{
   width:500px;
@@ -198,7 +197,9 @@
 .btn_add{
   margin-top:50px;
 }
-
+.auth{
+  padding-top: 8px;
+}
 .authc{
   text-decoration: none;
   color: black;
@@ -206,4 +207,11 @@
 .dright{
   position: absolute;
   right:109px;
+}
+
+.header{
+  width:100%;
+  top:0;
+  position: fixed;
+  background-color: white;
 }

@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <section className="header">
         <div className="container">
-        <div className="row mt-2 ">
+        <div className="row">
             <div className="d-flex justify-content-between  ">
             <div className="logo_img ">
                 <img src="/assets/img/logo.png" alt="logo" />

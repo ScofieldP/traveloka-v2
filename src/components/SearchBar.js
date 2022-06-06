@@ -59,9 +59,9 @@ const SearchBar = () => {
               </p>
               <div className="col-4 mt-1">
                 <p>Món ăn</p>
-                <div className="input-group mb-3">
+                <div className="input-group mb-3 position-static">
                   <label
-                    className="input-group-text"
+                    className="input-group-text position-static"
                     id="basic-addon1"
                     htmlFor="food"
                   >
@@ -69,7 +69,7 @@ const SearchBar = () => {
                   </label>
                   <input
                     type="text"
-                    className="form-control shadow-none border-dark"
+                    className="form-control shadow-none border-dark position-static"
                     placeholder="Nhập món ăn "
                     onChange={(e) => setFood(e.target.value)}
                     id="food"
@@ -78,9 +78,9 @@ const SearchBar = () => {
               </div>
               <div className="col-8 mt-1">
                 <p>Địa điểm, tên nhà hàng</p>
-                <div className="input-group mb-3">
+                <div className="input-group mb-3 position-static">
                   <label
-                    className="input-group-text"
+                    className="input-group-text position-static"
                     id="basic-addon1"
                     htmlFor="name"
                   >
@@ -88,7 +88,7 @@ const SearchBar = () => {
                   </label>
                   <input
                     type="text"
-                    className="form-control shadow-none border-dark"
+                    className="form-control shadow-none border-dark position-static"
                     placeholder="Nhập địa điểm, nhà hàng bạn mong muốn tìm"
                     onChange={(e) => setRes(e.target.value)}
                     id="name"
