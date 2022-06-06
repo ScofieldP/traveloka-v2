@@ -5,6 +5,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import ReactPaginate from "react-paginate";
 import Header from "../Header";
 import Footer from "../Footer";
+import SearchBar from "../SearchBar";
 import Place from "./Place";
 
 export default function Choice(props) {
@@ -29,48 +30,7 @@ export default function Choice(props) {
     <>
       <Header />
       <section className="main_container">
-        <div className="search_res">
-          <div className="container w-75 shadow-lg px-4 mt-4 ">
-            <div className="row">
-              <div className="col-4 mt-3">
-                <p>Location</p>
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1">
-                    <FontAwesomeIcon icon={faLocationDot} />
-                  </span>
-                  <input
-                    type="text"
-                    class="form-control shadow-none border-dark"
-                    placeholder="Username"
-                    aria-label="Username"
-                    aria-describedby="basic-addon1"
-                  />
-                </div>
-              </div>
-              <div className="col-8 mt-3">
-                <p>Cuisine, dish, or Restaurant name</p>
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1">
-                    <FontAwesomeIcon icon={faSearch} />
-                  </span>
-                  <input
-                    type="text"
-                    class="form-control shadow-none border-dark"
-                    placeholder="Username"
-                    aria-label="Username"
-                    aria-describedby="basic-addon1"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="btn_search  d-flex justify-content-end">
-              <button type="button" class="btn btn-warning btn-md my-1 ">
-                <FontAwesomeIcon icon={faSearch} className="me-2" />
-                Search
-              </button>
-            </div>
-          </div>
-        </div>
+       <SearchBar/>
         <div className="bread_crum">
           <div className="container w-75 ">
             <p>Eats/ A Place/ Asian</p>
