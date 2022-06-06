@@ -44,7 +44,7 @@ const Detailres = () => {
   return (
     <>
       <Header />
-      <section className="main_container">
+      <section className="mainContainer">
         <div className="bread_crum">
           <div className="container w-75">
             <p>
@@ -90,8 +90,8 @@ const Detailres = () => {
                 Liên hệ chúng tôi qua Hotline: {data.Res_phone}
               </div>
             </div>
-            <div className="col-4 border border-secondary ms-5">
-              <h3 className="mb-3">Thông tin Nhà hàng</h3>
+            <div className="col-4 border border-secondary ms-5 h-50">
+              <h3 className="mb-3">Thông tin nhà hàng</h3>
               <p className="fs-5 m-0 fw-bold">
                 <FontAwesomeIcon icon={faClock} className="me-3" />
                 Thời gian hoạt động

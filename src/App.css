@@ -215,3 +215,6 @@
   position: fixed;
   background-color: white;
 }
+.mainContainer{
+  margin-top:120px;
+}

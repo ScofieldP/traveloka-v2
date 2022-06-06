@@ -24,7 +24,7 @@ export default function OrderFood  (props) {
         <>
         <Header/>
 
-        <section className="main_container">
+        <section className="mainContainer">
         <div className="container">
           <div className="d-flex justify-content-center ">
           <h2 className="text-center my-5 font_title"> Menu nhà hàng</h2>
