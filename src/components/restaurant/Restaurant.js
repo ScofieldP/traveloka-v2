@@ -8,7 +8,7 @@ const Restaurant = () => {
   return (
     <>
       <Header />
-      <section className="main_menu">
+      <section className="main_menu" >
         <div className="back_img ">
           <img src="/assets/img/background.png" alt="logo" />
         </div>

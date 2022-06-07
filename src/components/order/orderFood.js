@@ -73,7 +73,7 @@ export default function OrderFood  (props) {
         </SlidingPane>  
           </div>
         <Tabs id="controlled-tab-example" className="mb-3 justify-content-center">
-          <Tab eventKey="food" title="Food">
+          <Tab eventKey="food" title="Thức ăn">
             <div className="row">
             <div className="col-6">
                 {products.map((product)=>(
@@ -88,7 +88,7 @@ export default function OrderFood  (props) {
             </div>
 
           </Tab>
-          <Tab eventKey="drink" title="Drink">
+          <Tab eventKey="drink" title="Đồ uống">
             <div className="row">
               <div className="col-6">
             {drinks.map((drink)=>(
@@ -102,7 +102,7 @@ export default function OrderFood  (props) {
             </div>
             </div>
           </Tab>
-          <Tab eventKey="dessert" title="Dessert" >
+          <Tab eventKey="dessert" title="Tráng miệng" >
           <div className="row">
             <div className="col-6">
                 {products.map((product)=>(

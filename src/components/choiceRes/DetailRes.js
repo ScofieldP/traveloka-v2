@@ -65,7 +65,7 @@ const Detailres = () => {
                 <img
                   src="/assets/img/food-14.png"
                   alt=""
-                  style={{ width: "645px", height: "400px" }}
+                  style={{ width: "100%" }}
                 />
               </div>
               <div className="res_collection border-0 border-bottom border-secondary pb-3">

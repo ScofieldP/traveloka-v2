@@ -11,6 +11,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-modal";
+import Header from "../Header";
+import Footer from "../Footer";
 
 //modal
 const customStyles = {
@@ -338,63 +340,11 @@ const OrderTable = () => {
 
   return (
     <>
-      <section className="header">
-        <div class="container">
-          <div class="row mt-2 ">
-            <div className="d-flex justify-content-between  ">
-              <div className="logo_img ">
-                <img src="/assets/img/logo.png" alt="logo" />
-              </div>
-              <div className="auth ">
-                <Link className="authA" to="/login" element={<Login />}>
-                  Tạo tài khoản
-                </Link>
-                <Link className="authB" to="/register" element={<Register />}>
-                  Đăng nhập
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="nav_bar">
-          <Navbar bg="light" expand="lg">
-            <Container>
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
-                  <Nav.Link href="" className="text-dark">
-                    Transports
-                  </Nav.Link>
-                  <Nav.Link href="" className="text-dark">
-                    Accommodations
-                  </Nav.Link>
-                  <NavDropdown title="Things to do" id="basic-nav-dropdown">
-                    <NavDropdown.Item href="" className="text-dark ">
-                      Xperience
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="/restaurant" className="text-dark">
-                      Eats
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="" className="text-dark">
-                      Healthcare
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                  <Nav.Link href="" className="text-dark">
-                    Bills & Top-ups
-                  </Nav.Link>
-                  <Nav.Link href="" className="text-dark">
-                    Travel Add-ons
-                  </Nav.Link>
-                </Nav>
-              </Navbar.Collapse>
-            </Container>
-          </Navbar>
-        </div>
-      </section>
+      <Header/>
 
       <section className="main_table py-5">
         <div className="container w-75 border border-dark">
-          <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+          <Tab.Container id="left-tabs-example" defaultActiveKey="first" >
             <Row>
               <Col sm={3}>
                 <Nav variant="pills" className="flex-column">
@@ -409,14 +359,14 @@ const OrderTable = () => {
                   </Nav.Item>
                 </Nav>
               </Col>
-              <Col sm={9}>
-                <Tab.Content>
+              <Col sm={9} className="p-0" >
+                <Tab.Content >
                   {/* Đặt bàn trước */}
                   <Tab.Pane eventKey="first" className="bg-dark">
-                    <div className="container border border-dark border-end-0 border-bottom-0 border-top-0">
+                    <div className="container border border-dark border-end-0 border-bottom-0 border-top-0 bg-dark">
                       <div className="order_title border-0 border-bottom border-dark ">
                         <h4 className="text-center py-2 font_title">
-                          Reservation
+                          Phiếu đặt bàn
                         </h4>
                       </div>
                       <div className="form_tbl d-flex py-3">
@@ -427,7 +377,7 @@ const OrderTable = () => {
                               for="datepicker"
                               class="form-label text-white"
                             >
-                              Date & Time
+                              Ngày đặt bàn
                             </label>
                             <DatePicker
                               showTimeSelect
@@ -443,7 +393,7 @@ const OrderTable = () => {
                               for="datepicker"
                               class="form-label text-white "
                             >
-                              Your phone
+                              Số điện thoại
                             </label>
                             <input
                               type="text"
@@ -458,12 +408,12 @@ const OrderTable = () => {
                               for="datepicker"
                               class="form-label text-white"
                             >
-                              Pick a table
+                              Chọn bàn
                             </label>
                             <input
                               type="text"
                               class="form-control text-white"
-                              placeholder="Số điện thoại"
+                              placeholder="Chọn bàn "
                             />
                           </div>
 
@@ -490,12 +440,12 @@ const OrderTable = () => {
                               for="datepicker"
                               class="form-label text-white"
                             >
-                              No of people
+                              Số lượng người 
                             </label>
                             <input
                               type="text"
                               class="form-control"
-                              placeholder="Đặt cọc trước"
+                              placeholder="Số lượng người "
                             />
                           </div>
 
@@ -505,7 +455,7 @@ const OrderTable = () => {
                               for="datepicker"
                               class="form-label text-white"
                             >
-                              Your name
+                              Họ tên khách hàng
                             </label>
                             <input
                               type="text"
@@ -520,7 +470,7 @@ const OrderTable = () => {
                               for="datepicker"
                               class="form-label text-white"
                             >
-                              Special Request
+                              Ghi chú
                             </label>
                             <input
                               type="text"
@@ -532,9 +482,9 @@ const OrderTable = () => {
                       </div>
                       <button
                         type="button"
-                        class="btn btn-warning w-100 py-3 mt-3 "
+                        class="btn btn-primary w-100 py-3 mt-3 "
                       >
-                        BOOK NOW
+                        ĐẶT BÀN
                       </button>
                     </div>
                   </Tab.Pane>
@@ -576,6 +526,8 @@ const OrderTable = () => {
           </Tab.Container>
         </div>
       </section>
+
+      <Footer/>
     </>
   );
 };
