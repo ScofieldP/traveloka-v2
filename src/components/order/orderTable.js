@@ -1,342 +1,32 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { Navbar, Container, Nav, NavDropdown, Carousel } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import Login from ".././auth/Login";
-import Register from ".././auth/Register";
-import { TabContainer, Row, Col, Tab, Tabs } from "react-bootstrap";
+import { useState} from "react";
+import { Nav} from "react-bootstrap";
+
+import {  Row, Col, Tab, Tabs } from "react-bootstrap";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import Modal from "react-modal";
+import {  faCircleMinus } from "@fortawesome/free-solid-svg-icons";
 import Header from "../Header";
 import Footer from "../Footer";
+import Food from "../fakeData/Food"
+import Water from "../fakeData/Water"
+export default function OrderTable(props) {
+ 
+  const { products, onAdd, onRemove } = props;
 
-//modal
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
-const OrderTable = () => {
-  //modal
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-  function openModal() {
-    setIsOpen(true);
-  }
-  function closeModal() {
-    setIsOpen(false);
-  }
-
+  const { drinks } = props;
+  const { cartItems } = props;
+  // tạm tính
+  const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
+  // tổng tiền
+  const totalPrice = itemsPrice;
   //date
   const [startDate, setStartDate] = useState(new Date());
   let handleColor = (time) => {
     return time.getHours() > 12 ? "text-success" : "text-error";
   };
-
-  //foods
-  const [orders, setOrder] = useState([
-    {
-      id: 1,
-      title: "Fried Chicken",
-      description: "Cho nhiều người",
-      price: "500.000VND",
-      img: "./assets/img/food-13.png",
-    },
-    {
-      id: 2,
-      title: "Fried Chicken",
-      description: "Cho nhiều người",
-      price: "500.000VND",
-      img: "./assets/img/food-13.png",
-    },
-    {
-      id: 3,
-      title: "Fried Chicken",
-      description: "Cho nhiều người",
-      price: "500.000VND",
-      img: "./assets/img/food-13.png",
-    },
-    {
-      id: 4,
-      title: "Fried Chicken",
-      description: "Cho nhiều người",
-      price: "500.000VND",
-      img: "./assets/img/food-13.png",
-    },
-  ]);
-  const displayOrder = orders.map((order) => {
-    return (
-      <>
-        <div className="row mt-3 border border-dark rounded-3">
-          <div className="col-3 p-0">
-            <img
-              src={order.img}
-              alt=""
-              style={{ width: "180px", height: "180px" }}
-            />
-          </div>
-          <div className="col-7">
-            <div className="food_detail">
-              <p className="fw-bold fs-4">{order.title}</p>
-              <p className="mb-0">{order.description}</p>
-              <p className="m-0">{order.price}</p>
-              <p>
-                <FontAwesomeIcon icon={faShoppingCart} /> 100+
-              </p>
-            </div>
-          </div>
-          <div className="col-2 ">
-            <FontAwesomeIcon
-              icon={faCirclePlus}
-              className="add_btn"
-              onClick={openModal}
-            />
-            <Modal
-              isOpen={modalIsOpen}
-              onRequestClose={closeModal}
-              style={customStyles}
-              contentLabel="Example Modal"
-            >
-              <button onClick={closeModal}>close</button>
-              <div className="container">
-                <div className="row border border-dark">
-                  {/* Thêm vào giỏ hàng */}
-                  <div className="col-9 ">
-                    <div className="row px-4 py-4">
-                      <div className="col-3">
-                        <img
-                          src={order.img}
-                          alt=""
-                          style={{ width: "150px", height: "150px" }}
-                        />
-                      </div>
-                      <div className="col-7 ms-5 mt-3">
-                        <p className="fw-bold fs-4">{order.title}</p>
-                        <p className="mb-0">{order.description}</p>
-                        <p className="m-0">{order.price}</p>
-                        <p>
-                          <FontAwesomeIcon icon={faShoppingCart} /> 100+
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* Nút thêm */}
-              <button type="button" className="btn btn-primary w-100 mt-2">
-                Thêm vào giỏ hàng
-              </button>
-            </Modal>
-          </div>
-        </div>
-      </>
-    );
-  });
-
-  //drink
-  const [drinks, setDrinks] = useState([
-    {
-      id: 1,
-      title: "Fried Chicken",
-      description: "Cho nhiều người",
-      price: "500.000VND",
-      img: "./assets/img/food-13.png",
-    },
-    {
-      id: 2,
-      title: "Fried Chicken",
-      description: "Cho nhiều người",
-      price: "500.000VND",
-      img: "./assets/img/food-13.png",
-    },
-    {
-      id: 3,
-      title: "Fried Chicken",
-      description: "Cho nhiều người",
-      price: "500.000VND",
-      img: "./assets/img/food-13.png",
-    },
-    {
-      id: 4,
-      title: "Fried Chicken",
-      description: "Cho nhiều người",
-      price: "500.000VND",
-      img: "./assets/img/food-13.png",
-    },
-  ]);
-  const displayDrink = drinks.map((drink) => {
-    return (
-      <>
-        <div className="row mt-3 border border-dark rounded-3">
-          <div className="col-3 p-0">
-            <img
-              src={drink.img}
-              alt=""
-              style={{ width: "180px", height: "180px" }}
-            />
-          </div>
-          <div className="col-7">
-            <div className="food_detail">
-              <p className="fw-bold fs-4">{drink.title}</p>
-              <p className="mb-0">{drink.description}</p>
-              <p className="m-0">{drink.price}</p>
-              <p>
-                <FontAwesomeIcon icon={faShoppingCart} /> 100+
-              </p>
-            </div>
-          </div>
-          <div className="col-2 ">
-            <FontAwesomeIcon
-              icon={faCirclePlus}
-              className="add_btn"
-              onClick={openModal}
-            />
-            <Modal
-              isOpen={modalIsOpen}
-              onRequestClose={closeModal}
-              style={customStyles}
-              contentLabel="Example Modal"
-            >
-              <button onClick={closeModal}>close</button>
-              <div className="container">
-                <div className="row border border-dark">
-                  {/* Thêm vào giỏ hàng */}
-                  <div className="col-9 ">
-                    <div className="row px-4 py-4">
-                      <div className="col-3">
-                        <img
-                          src={drink.img}
-                          alt=""
-                          style={{ width: "150px", height: "150px" }}
-                        />
-                      </div>
-                      <div className="col-7 ms-5 mt-3">
-                        <p className="fs-4 fw-bold">{drink.title}</p>
-                        <p className="mb-0">{drink.description}</p>
-                        <p className="m-0">{drink.price}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* Nút thêm */}
-              <button type="button" className="btn btn-primary w-100 mt-2">
-                Thêm vào giỏ hàng
-              </button>
-            </Modal>
-          </div>
-        </div>
-      </>
-    );
-  });
-
-  // dessert
-  const [desserts, setDesserts] = useState([
-    {
-      id: 1,
-      title: "Fried Chicken",
-      description: "Cho nhiều người",
-      price: "500.000VND",
-      img: "./assets/img/food-13.png",
-    },
-    {
-      id: 2,
-      title: "Fried Chicken",
-      description: "Cho nhiều người",
-      price: "500.000VND",
-      img: "./assets/img/food-13.png",
-    },
-    {
-      id: 3,
-      title: "Fried Chicken",
-      description: "Cho nhiều người",
-      price: "500.000VND",
-      img: "./assets/img/food-13.png",
-    },
-    {
-      id: 4,
-      title: "Fried Chicken",
-      description: "Cho nhiều người",
-      price: "500.000VND",
-      img: "./assets/img/food-13.png",
-    },
-  ]);
-  const displayDesserts = desserts.map((dessert) => {
-    return (
-      <>
-        <div className="row mt-3 border border-dark rounded-3">
-          <div className="col-3 p-0">
-            <img
-              src={dessert.img}
-              alt=""
-              style={{ width: "180px", height: "180px" }}
-            />
-          </div>
-          <div className="col-7">
-            <div className="food_detail">
-              <p className="fw-bold fs-4">{dessert.title}</p>
-              <p className="mb-0">{dessert.description}</p>
-              <p className="m-0">{dessert.price}</p>
-              <p>
-                <FontAwesomeIcon icon={faShoppingCart} /> 100+
-              </p>
-            </div>
-          </div>
-          <div className="col-2 ">
-            <FontAwesomeIcon
-              icon={faCirclePlus}
-              className="add_btn"
-              onClick={openModal}
-            />
-            <Modal
-              isOpen={modalIsOpen}
-              onRequestClose={closeModal}
-              style={customStyles}
-              contentLabel="Example Modal"
-            >
-              <button onClick={closeModal}>close</button>
-              <div className="container">
-                <div className="row border border-dark">
-                  {/* Thêm vào giỏ hàng */}
-                  <div className="col-9 ">
-                    <div className="row px-4 py-4">
-                      <div className="col-3">
-                        <img
-                          src={dessert.img}
-                          alt=""
-                          style={{ width: "150px", height: "150px" }}
-                        />
-                      </div>
-                      <div className="col-7 ms-5 mt-3">
-                        <p className="fw-bold fs-4">{dessert.title}</p>
-                        <p className="mb-0">{dessert.description}</p>
-                        <p className="m-0">{dessert.price}</p>
-                        <p>
-                          <FontAwesomeIcon icon={faShoppingCart} /> 100+
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* Nút thêm */}
-              <button type="button" className="btn btn-primary w-100 mt-2">
-                Thêm vào giỏ hàng
-              </button>
-            </Modal>
-          </div>
-        </div>
-      </>
-    );
-  });
 
   return (
     <>
@@ -503,23 +193,72 @@ const OrderTable = () => {
                         >
                           <Tab
                             eventKey="home"
-                            title="Món ăn"
+                            title="Thức ăn"
                             className=" border border-0"
                           >
-                            {displayOrder}
-                          </Tab>
+                        {products.map((product) => (
+                        <Food key={product.id} product={product} onAdd={onAdd} />
+                      ))}                          
+                      </Tab>
                           <Tab eventKey="profile" title="Thức uống">
-                            {displayDrink}
+                          {drinks.map((drink) => (
+                          <Water key={drink.id} drink={drink}  onAdd={onAdd}/>
+                          ))}
                           </Tab>
                           <Tab eventKey="contact" title="Tráng miệng">
-                            {displayDesserts}
                           </Tab>
                         </Tabs>
                       </div>
                     </div>
                   </Tab.Pane>
 
-                  <Tab.Pane eventKey="third"></Tab.Pane>
+                  <Tab.Pane eventKey="third">
+                    {/* Chi tiết hóa đơn */}
+                  <div>{cartItems.length === 0 && <div>Giỏ hàng trống</div>}</div>
+                  {cartItems.map((item) => (
+                  <div key={item.id} className="row mt-2">
+                  <div className="col-3">
+                    <img src={item.img} style={{width:'100px', height:'100px'}}alt="" />
+                  </div>
+
+                  <div className="col-5">
+                    <p  className="my-4 mb-0 fw-bold fs-5">{item.title} </p>
+                    <div>
+                    <p className="m-0">Số lượng: {item.qty} x {item.price}</p>
+
+                    </div>                   
+
+                  </div>
+                  <div className="col-4 ">
+                    <div className="d-flex justify-content-center my-5">
+                      <FontAwesomeIcon 
+                        icon={ faCirclePlus} 
+                        className="me-3"
+                        onClick={() => onAdd(item)}/>   
+
+                    <FontAwesomeIcon 
+                        icon={ faCircleMinus} 
+                        className=""
+                        onClick={() => onRemove(item)}/>  
+                  
+                    </div>    
+                  </div>
+
+                </div>
+              ))}
+              {cartItems.length !== 0 && (
+                <>
+                <div className=" justify-content-end">
+                <p className="d-flex justify-content-end">Tạm tính: {itemsPrice}</p>
+                  <p className="d-flex justify-content-end">Tiền cọc:</p>
+                  <p className="d-flex justify-content-end">Tổng tiền: {totalPrice}</p>
+                </div>
+                
+                <input type="submit" value="Thanh toán" className="w-100 p-2"/>
+
+                </>
+              )}
+                  </Tab.Pane>
                 </Tab.Content>
               </Col>
             </Row>
@@ -531,5 +270,3 @@ const OrderTable = () => {
     </>
   );
 };
-
-export default OrderTable;

@@ -12,7 +12,6 @@ import Choice from "./components/choiceRes/Choice";
 import DetailRes from "./components/choiceRes/DetailRes";
 import OrderFood from "./components/order/orderFood";
 import OrderTable from "./components/order/orderTable";
-import Test from "./components/Test";
 import data from "./components/fakeData/data";
 import data1 from "./components/fakeData/data1";
 import data2 from "./components/fakeData/data2";
@@ -71,8 +70,14 @@ function App() {
             />
           }
         />
-        <Route path="/orderTable" element={<OrderTable />} />
-        <Route path="/test" element={<Test />} />
+        <Route path="/orderTable" element={
+        <OrderTable 
+        onAdd={onAdd}
+              onRemove={onRemove}
+              products={prodcts}
+              drinks={products}
+              cartItems={cartItems}
+        />} />
       </Routes>
     </BrowserRouter>
   );
