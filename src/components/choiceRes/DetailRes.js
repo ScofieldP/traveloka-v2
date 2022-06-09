@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import OrderFood from "../order/orderFood";
@@ -124,24 +124,6 @@ const Detailres = () => {
                   Bạn có thể đặt bàn ăn trực tiếp 24/24
                 </p>
               </ReadMore>
-
-              {/* <div className="categories_res">
-                <div className="cate_a">
-                  <p className="fs-5 m-0 fw-bold">Dishes & Cuisines</p>
-                  <ul class="list-unstyled ul_cate ">
-                    <li>Fried Chicken</li>
-                    <li>Asian</li>
-                    <li>Takoyaki</li>
-                    <li>Yakiniku</li>
-                    <li>Teriyaki</li>
-                  </ul>
-                </div>
-                <div className="cate_b">
-                  <p className="fs-5 m-0 fw-bold">Dietary Restrictions</p>
-                  <span className="m-0 sp_noinfo">Info not available</span>
-                </div>
-              </div> */}
-
               <div className="price_range">
                 <p className="fs-5 m-0 fw-bold">Mức giá bình quân</p>
                 <FontAwesomeIcon icon={faDollarSign} />
