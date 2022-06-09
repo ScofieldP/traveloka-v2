@@ -7,6 +7,8 @@ import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import {  faCircleMinus } from "@fortawesome/free-solid-svg-icons";
 
 export default function OrderFood(props) {
   const [state, setState] = useState({
@@ -17,8 +19,11 @@ export default function OrderFood(props) {
 
   const { drinks } = props;
   const { cartItems } = props;
+  // tạm tính
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
+  // tiền ship
   const shippingPrice = itemsPrice < 2000 ? 0 : 50;
+  // tổng tiền
   const totalPrice = itemsPrice + shippingPrice;
   return (
     <>
@@ -41,40 +46,59 @@ export default function OrderFood(props) {
               title="Giỏ hàng"
               width="40%"
               onRequestClose={() => {
-                // triggered on "<" on left top click or on outside click
-                setState({ isPaneOpen: false });
+                  setState({ isPaneOpen: false });
               }}
             >
               <div>{cartItems.length === 0 && <div>Giỏ hàng trống</div>}</div>
               {cartItems.map((item) => (
-                <div key={item.id} className="row">
-                  <div>
-                    <img src={item.img} alt="" />
-                  </div>
-                  <div>{item.detailTitle}</div>
-                  <div>
-                    <button onClick={() => onAdd(item)} className="add">
-                      +
-                    </button>
-                    <button onClick={() => onRemove(item)} className="remove">
-                      -
-                    </button>
+                <div key={item.id} className="row mt-2">
+                  <div className="col-3">
+                    <img src={item.img} style={{width:'100px', height:'100px'}}alt="" />
                   </div>
 
-                  <div>
-                    {item.qty} x {item.price}
+                  <div className="col-5">
+                    <p  className="my-4 mb-0 fw-bold fs-5">{item.title} </p>
+                    <div>
+                    <p className="m-0">Số lượng: {item.qty} x {item.price}</p>
+
+                    </div>                   
+
                   </div>
+                  <div className="col-4 ">
+                    <div className="d-flex justify-content-center my-5">
+                      <FontAwesomeIcon 
+                        icon={ faCirclePlus} 
+                        className="me-3"
+                        onClick={() => onAdd(item)}/>   
+
+                    <FontAwesomeIcon 
+                        icon={ faCircleMinus} 
+                        className=""
+                        onClick={() => onRemove(item)}/>  
+                  
+                    </div>    
+                  </div>
+
                 </div>
               ))}
               {cartItems.length !== 0 && (
                 <>
-                  <div>{itemsPrice}</div>
-                  <div>{shippingPrice}</div>
-                  <div>{totalPrice}</div>
+                <div className=" justify-content-end">
+                <p className="d-flex justify-content-end">Tạm tính: {itemsPrice}</p>
+                  <p className="d-flex justify-content-end">Phí ship: {shippingPrice}</p>
+                  <p className="d-flex justify-content-end">Tổng tiền: {totalPrice}</p>
+                </div>
+                
+                <input type="submit" value="Thanh toán" className="w-100 p-2"/>
+
                 </>
               )}
+              
             </SlidingPane>
+
+           
           </div>
+
           <Tabs
             id="controlled-tab-example"
             className="mb-3 justify-content-center"

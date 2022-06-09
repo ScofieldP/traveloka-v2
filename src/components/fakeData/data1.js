@@ -4,7 +4,7 @@ const data1 ={
         id:6,
         title: 'Sting',
         description: 'Cho nhiều người',
-        price: '500.000VND',
+        price: '1400',
         img:"./assets/img/sting.jpg ",
         },
         {
