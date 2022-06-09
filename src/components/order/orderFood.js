@@ -39,7 +39,6 @@ export default function OrderFood(props) {
               overlayClassName="some-custom-overlay-class"
               isOpen={state.isPaneOpen}
               title="Giỏ hàng"
-              subtitle="Optional subtitle."
               width="40%"
               onRequestClose={() => {
                 // triggered on "<" on left top click or on outside click
@@ -98,7 +97,7 @@ export default function OrderFood(props) {
               <div className="row">
                 <div className="col-6">
                   {drinks.map((drink) => (
-                    <Water key={drink.id} drink={drink} />
+                    <Water key={drink.id} drink={drink}  onAdd={onAdd}/>
                   ))}
                 </div>
                 <div className="col-6">

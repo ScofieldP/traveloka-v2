@@ -1,33 +1,13 @@
 import React from 'react'
-import {useState, useEffect} from 'react';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import { faShoppingCart} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Modal from 'react-modal';
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
 
 export default function Food(props) {
 
 
 
-//modal
-const [modalIsOpen, setIsOpen] = React.useState(false);
-function openModal() {
-  setIsOpen(true);
-}
-function closeModal() {
-  setIsOpen(false);
-}
   const {product, onAdd} = props;
     return (
       <div className="row mt-3 border border-dark rounded-3">
@@ -35,7 +15,7 @@ function closeModal() {
           <img src={product.img} alt="" style={{width:'180px', height:'180px'}}/>
         </div>
           <div className = "col-7">
-            <div className="food_detail">
+            <div className="food_detail my-4 ms-4">
               {/* Tên món ăn */}
             <p className ="fw-bold fs-4">{product.title}</p>
             {/* Mô tả */}
@@ -46,88 +26,10 @@ function closeModal() {
             </div>      
       </div>
       <div className="col-2 ">
-          <p className="add_btn" onClick={openModal}> Xem chi tiết</p>
-        <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        ariaHideApp={false}
-        contentLabel="Example Modal">
-        <button onClick={closeModal}>close</button>
-        <div className="container">
-        <div className="row border border-dark">
-            {/* Thêm vào giỏ hàng */}
-            <div className="col-6 ">
-                {
-                  product.details && product.details.map(detail=>{
-                    return(
-                      <>
-                        <div className="row mt-3 border border-dark rounded-3">
-                          <div className="col-3 p-0">
-                            <img src={detail.img} alt="" style={{width:'180px', height:'180px'}}/>
-                          </div>
-                          <div className = "col-7">
-                            <div className="food_detail">
-                              {/* Tên món ăn */}
-                            <p className ="fw-bold fs-4">{detail.detailTitle}</p>
-                            {/* Mô tả */}
-                          <p className ="mb-0">{detail.description}</p>
-                          {/* Giá tiền */}
-                          <p className ="m-0">{detail.price}</p>
-                          <p><FontAwesomeIcon icon={faShoppingCart}  /> 100+</p>
-                            </div>
-                          </div>
-                          <div className="col-2 ">
-                            <FontAwesomeIcon 
-                              icon={faCirclePlus} 
-                              className="add_btn"
-                              onClick = {() => onAdd(detail)}/>
-
-                            </div>
-                        </div>
-                      </>
-                      
-                      
-                    )
-                  })
-                }
-              </div>
-              <div className="col-6 ">
-                {
-                  product.details && product.details.map(detail=>{
-                    return(
-                      <>
-                        <div className="row mt-3 border border-dark rounded-3">
-                          <div className="col-3 p-0">
-                            <img src={detail.img} alt="" style={{width:'180px', height:'180px'}}/>
-                          </div>
-                          <div className = "col-7">
-                            <div className="food_detail">
-                              {/* Tên món ăn */}
-                            <p className ="fw-bold fs-4">{detail.detailTitle}</p>
-                            {/* Mô tả */}
-                          <p className ="mb-0">{detail.description}</p>
-                          {/* Giá tiền */}
-                          <p className ="m-0">{detail.price}</p>
-                          <p><FontAwesomeIcon icon={faShoppingCart}  /> 100+</p>
-                            </div>
-                          </div>
-                          <div className="col-2 ">
-                            <FontAwesomeIcon icon={faCirclePlus} className="add_btn"/>
-                          </div>
-                        </div>
-                      </>
-                      
-                      
-                    )
-                  })
-                }
-              </div>    
-        </div>
-        </div>
-        {/* Nút thêm */}
-        <button type="button" className="btn btn-primary w-100 mt-2">Xác nhận</button>
-        </Modal>
+      <FontAwesomeIcon 
+        icon={faCirclePlus} 
+        className="add_btn"
+        onClick = {() => onAdd(product)}/>        
       </div>
       </div>  
                               

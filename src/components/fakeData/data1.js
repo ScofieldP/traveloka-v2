@@ -1,7 +1,7 @@
 const data1 ={
     products:[
         {
-        id:1,
+        id:6,
         title: 'Sting',
         description: 'Cho nhiều người',
         price: '500.000VND',
