@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-
+import Axios from "axios";
 import OrderFood from "../order/orderFood";
 import OrderTable from "../order/orderTable";
 
@@ -13,7 +13,7 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 import Header from "../Header";
 import Footer from "../Footer";
-
+import { CONNECTION_STRING } from "../../config/index";
 function ReadMore({ children = 0 }) {
   const text = children;
   const [isShow, setIsShowLess] = useState(true);
@@ -33,6 +33,7 @@ function ReadMore({ children = 0 }) {
     </p>
   );
 }
+
 const Detailres = () => {
   const location = useLocation();
   const { data } = location.state;
@@ -40,7 +41,14 @@ const Detailres = () => {
   var time =
     today.getHours().length !== 1 ? "0" + today.getHours() : today.getHours();
   time = time + ":" + today.getMinutes();
-  console.log(data);
+
+  async function GetDataAPI() {
+    const TofRes = await Axios.get(
+      CONNECTION_STRING + `/typeofFood/${data.Res_id}`
+    );
+    localStorage.setItem("ToFdata", JSON.stringify(TofRes));
+  }
+
   return (
     <>
       <Header />
@@ -159,6 +167,7 @@ const Detailres = () => {
                       className="text-decoration-none text-black"
                       to="/orderFood"
                       element={<OrderFood />}
+                      onClick={GetDataAPI()}
                     >
                       Đặt Online
                     </Link>
