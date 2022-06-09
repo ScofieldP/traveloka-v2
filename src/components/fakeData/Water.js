@@ -16,7 +16,7 @@ export default function Water(props) {
           <img src={drink.img} alt="" style={{width:'180px', height:'180px'}}/>
         </div>
           <div className = "col-7">
-            <div className="food_detail">
+            <div className="food_detail my-4 ms-4">
               {/* Tên món ăn */}
             <p className ="fw-bold fs-4">{drink.title}</p>
             {/* Mô tả */}
