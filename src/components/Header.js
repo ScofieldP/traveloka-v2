@@ -5,8 +5,18 @@ import Login from "././auth/Login";
 import Register from "./auth/Register";
 
 const Header = () => {
+  const findGetParameter = (parameterName) => {
+    let result = null;
+    let tmp = [];
+    let items = window.location.search.substr(1).split("&");
+    for (let index = 0; index < items.length; index++) {
+      tmp = items[index].split("=");
+      if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+    }
+    return result;
+  };
   return (
-    <section className="header">
+    <section className="header">  
         <div className="container">
         <div className="row">
             <div className="d-flex justify-content-between  ">
@@ -15,7 +25,7 @@ const Header = () => {
             </div>
             <div className="auth ">
             <Link className="authA" to ="/login" element={ <Register/>}>Tạo tài khoản</Link>
-            <Link className="authB" to ="/register" element={ <Login/>}>Đăng nhập</Link>
+            <a className="authB" href ="https://profile.vinhphancommunity.xyz/Login?redirect=http://localhost:3000/" >Đăng nhập</a>
             </div>
             </div>
         </div>
