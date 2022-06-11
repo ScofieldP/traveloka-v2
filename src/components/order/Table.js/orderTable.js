@@ -1,19 +1,18 @@
 import React from "react";
-import { useState} from "react";
-import { Nav} from "react-bootstrap";
+import { useState } from "react";
+import { Nav } from "react-bootstrap";
 
-import {  Row, Col, Tab, Tabs } from "react-bootstrap";
+import { Row, Col, Tab, Tabs } from "react-bootstrap";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
-import {  faCircleMinus } from "@fortawesome/free-solid-svg-icons";
-import Header from "../Header";
-import Footer from "../Footer";
-import Food from "../fakeData/Food"
-import Water from "../fakeData/Water"
+import { faCircleMinus } from "@fortawesome/free-solid-svg-icons";
+import Header from "../../Header";
+import Footer from "../../Footer";
+import Food from "../Food.js/Food";
+import Water from "../../fakeData/Water";
 export default function OrderTable(props) {
- 
   const { products, onAdd, onRemove } = props;
 
   const { drinks } = props;
@@ -30,11 +29,11 @@ export default function OrderTable(props) {
 
   return (
     <>
-      <Header/>
+      <Header />
 
       <section className="main_table py-5">
         <div className="container w-75 border border-dark">
-          <Tab.Container id="left-tabs-example" defaultActiveKey="first" >
+          <Tab.Container id="left-tabs-example" defaultActiveKey="first">
             <Row>
               <Col sm={3}>
                 <Nav variant="pills" className="flex-column">
@@ -49,8 +48,8 @@ export default function OrderTable(props) {
                   </Nav.Item>
                 </Nav>
               </Col>
-              <Col sm={9} className="p-0" >
-                <Tab.Content >
+              <Col sm={9} className="p-0">
+                <Tab.Content>
                   {/* Đặt bàn trước */}
                   <Tab.Pane eventKey="first" className="bg-dark">
                     <div className="container border border-dark border-end-0 border-bottom-0 border-top-0 bg-dark">
@@ -130,7 +129,7 @@ export default function OrderTable(props) {
                               for="datepicker"
                               class="form-label text-white"
                             >
-                              Số lượng người 
+                              Số lượng người
                             </label>
                             <input
                               type="text"
@@ -196,17 +195,24 @@ export default function OrderTable(props) {
                             title="Thức ăn"
                             className=" border border-0"
                           >
-                        {products.map((product) => (
-                        <Food key={product.id} product={product} onAdd={onAdd} />
-                      ))}                          
-                      </Tab>
+                            {products.map((product) => (
+                              <Food
+                                key={product.id}
+                                product={product}
+                                onAdd={onAdd}
+                              />
+                            ))}
+                          </Tab>
                           <Tab eventKey="profile" title="Thức uống">
-                          {drinks.map((drink) => (
-                          <Water key={drink.id} drink={drink}  onAdd={onAdd}/>
-                          ))}
+                            {drinks.map((drink) => (
+                              <Water
+                                key={drink.id}
+                                drink={drink}
+                                onAdd={onAdd}
+                              />
+                            ))}
                           </Tab>
-                          <Tab eventKey="contact" title="Tráng miệng">
-                          </Tab>
+                          <Tab eventKey="contact" title="Tráng miệng"></Tab>
                         </Tabs>
                       </div>
                     </div>
@@ -214,50 +220,67 @@ export default function OrderTable(props) {
 
                   <Tab.Pane eventKey="third">
                     {/* Chi tiết hóa đơn */}
-                  <div>{cartItems.length === 0 && <div>Giỏ hàng trống</div>}</div>
-                  {cartItems.map((item) => (
-                  <div key={item.id} className="row mt-2">
-                  <div className="col-3">
-                    <img src={item.img} style={{width:'100px', height:'100px'}}alt="" />
-                  </div>
-
-                  <div className="col-5">
-                    <p  className="my-4 mb-0 fw-bold fs-5">{item.title} </p>
                     <div>
-                    <p className="m-0">Số lượng: {item.qty} x {item.price}</p>
+                      {cartItems.length === 0 && <div>Giỏ hàng trống</div>}
+                    </div>
+                    {cartItems.map((item) => (
+                      <div key={item.id} className="row mt-2">
+                        <div className="col-3">
+                          <img
+                            src={item.img}
+                            style={{ width: "100px", height: "100px" }}
+                            alt=""
+                          />
+                        </div>
 
-                    </div>                   
+                        <div className="col-5">
+                          <p className="my-4 mb-0 fw-bold fs-5">
+                            {item.title}{" "}
+                          </p>
+                          <div>
+                            <p className="m-0">
+                              Số lượng: {item.qty} x {item.price}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="col-4 ">
+                          <div className="d-flex justify-content-center my-5">
+                            <FontAwesomeIcon
+                              icon={faCirclePlus}
+                              className="me-3"
+                              onClick={() => onAdd(item)}
+                            />
 
-                  </div>
-                  <div className="col-4 ">
-                    <div className="d-flex justify-content-center my-5">
-                      <FontAwesomeIcon 
-                        icon={ faCirclePlus} 
-                        className="me-3"
-                        onClick={() => onAdd(item)}/>   
+                            <FontAwesomeIcon
+                              icon={faCircleMinus}
+                              className=""
+                              onClick={() => onRemove(item)}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                    {cartItems.length !== 0 && (
+                      <>
+                        <div className=" justify-content-end">
+                          <p className="d-flex justify-content-end">
+                            Tạm tính: {itemsPrice}
+                          </p>
+                          <p className="d-flex justify-content-end">
+                            Tiền cọc:
+                          </p>
+                          <p className="d-flex justify-content-end">
+                            Tổng tiền: {totalPrice}
+                          </p>
+                        </div>
 
-                    <FontAwesomeIcon 
-                        icon={ faCircleMinus} 
-                        className=""
-                        onClick={() => onRemove(item)}/>  
-                  
-                    </div>    
-                  </div>
-
-                </div>
-              ))}
-              {cartItems.length !== 0 && (
-                <>
-                <div className=" justify-content-end">
-                <p className="d-flex justify-content-end">Tạm tính: {itemsPrice}</p>
-                  <p className="d-flex justify-content-end">Tiền cọc:</p>
-                  <p className="d-flex justify-content-end">Tổng tiền: {totalPrice}</p>
-                </div>
-                
-                <input type="submit" value="Thanh toán" className="w-100 p-2"/>
-
-                </>
-              )}
+                        <input
+                          type="submit"
+                          value="Thanh toán"
+                          className="w-100 p-2"
+                        />
+                      </>
+                    )}
                   </Tab.Pane>
                 </Tab.Content>
               </Col>
@@ -266,7 +289,7 @@ export default function OrderTable(props) {
         </div>
       </section>
 
-      <Footer/>
+      <Footer />
     </>
   );
-};
+}

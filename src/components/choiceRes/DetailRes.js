@@ -1,8 +1,8 @@
 import { React, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Axios from "axios";
-import OrderFood from "../order/orderFood";
-import OrderTable from "../order/orderTable";
+import OrderFood from "../order/Food.js/orderFood";
+import OrderTable from "../order/Table.js/orderTable";
 
 import { Tabs, Tab } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

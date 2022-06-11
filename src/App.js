@@ -10,8 +10,8 @@ import Register from "./components/auth/Register";
 import Restaurant from "./components/restaurant/Restaurant";
 import Choice from "./components/choiceRes/Choice";
 import DetailRes from "./components/choiceRes/DetailRes";
-import OrderFood from "./components/order/orderFood";
-import OrderTable from "./components/order/orderTable";
+import OrderFood from "./components/order/Food.js/orderFood";
+import OrderTable from "./components/order/Table.js/orderTable";
 import data from "./components/fakeData/data";
 import data1 from "./components/fakeData/data1";
 import data2 from "./components/fakeData/data2";
@@ -23,11 +23,11 @@ function App() {
   const { restaurants } = data2;
   const [cartItems, setCartItems] = useState([]);
   const onAdd = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
+    const exist = cartItems.find((x) => x.Fd_id === product.Fd_id);
     if (exist) {
       setCartItems(
         cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
+          x.Fd_id === product.Fd_id ? { ...exist, qty: exist.qty + 1 } : x
         )
       );
     } else {
@@ -35,13 +35,13 @@ function App() {
     }
   };
   const onRemove = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
+    const exist = cartItems.find((x) => x.Fd_id === product.Fd_id);
     if (exist.qty === 1) {
-      setCartItems(cartItems.filter((x) => x.id !== product.id));
+      setCartItems(cartItems.filter((x) => x.Fd_id !== product.Fd_id));
     } else {
       setCartItems(
         cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
+          x.Fd_id === product.Fd_id ? { ...exist, qty: exist.qty - 1 } : x
         )
       );
     }
@@ -70,14 +70,18 @@ function App() {
             />
           }
         />
-        <Route path="/orderTable" element={
-        <OrderTable 
-        onAdd={onAdd}
+        <Route
+          path="/orderTable"
+          element={
+            <OrderTable
+              onAdd={onAdd}
               onRemove={onRemove}
               products={prodcts}
               drinks={products}
               cartItems={cartItems}
-        />} />
+            />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
