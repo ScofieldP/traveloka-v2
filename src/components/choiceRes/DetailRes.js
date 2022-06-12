@@ -42,16 +42,8 @@ const Detailres = () => {
     today.getHours().length !== 1 ? "0" + today.getHours() : today.getHours();
   time = time + ":" + today.getMinutes();
 
-  async function GetToFAPI() {
-    const TofRes = await Axios.get(
-      CONNECTION_STRING + `/typeofFood/${data.Res_id}`
-    );
-    localStorage.setItem("ToFdata", JSON.stringify(TofRes));
-  }
-
-  async function GetTableAPI() {
-    const tbl = await Axios.get(CONNECTION_STRING + `/table/${data.Res_id}`);
-    localStorage.setItem("Tbldata", JSON.stringify(tbl));
+  function SetResItem() {
+    localStorage.setItem("itemRes", JSON.stringify(data));
   }
 
   return (
@@ -172,7 +164,7 @@ const Detailres = () => {
                       className="text-decoration-none text-black"
                       to="/orderFood"
                       element={<OrderFood />}
-                      onClick={GetToFAPI()}
+                      onClick={SetResItem()}
                     >
                       Đặt Online
                     </Link>
@@ -184,7 +176,8 @@ const Detailres = () => {
                       className="text-decoration-none text-black"
                       to="/orderTable"
                       element={<OrderTable />}
-                      onClick={GetTableAPI()}
+                      onClick={SetResItem()}
+                      data={data}
                     >
                       Đặt bàn
                     </Link>

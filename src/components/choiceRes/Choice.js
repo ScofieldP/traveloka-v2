@@ -10,7 +10,9 @@ import Place from "./Place";
 
 export default function Choice(props) {
   //fake DB
-  const restaurants = !localStorage.res ? "" : JSON.parse(localStorage.res);
+  const restaurants = !localStorage.listRes
+    ? ""
+    : JSON.parse(localStorage.listRes);
   //console.log(restaurants);
   //const { restaurants } = props;
   const [pageNumber, setPageNumber] = useState(0);
@@ -30,7 +32,7 @@ export default function Choice(props) {
     <>
       <Header />
       <section className="main_container">
-       <SearchBar/>
+        <SearchBar />
         <div className="bread_crum">
           <div className="container w-75 ">
             <p>Eats/ A Place/ Asian</p>

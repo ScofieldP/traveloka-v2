@@ -1,14 +1,22 @@
-import React from "react";
-
-import SearchBar from "../SearchBar"
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import SearchBar from "../SearchBar";
 import Footer from "../Footer";
 import Header from "../Header";
+
 const Restaurant = () => {
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (window.location.pathname !== "/restaurant") {
+      navigate("/restaurant");
+    }
+  }, []);
 
   return (
     <>
       <Header />
-      <section className="main_menu" >
+      <section className="main_menu">
         <div className="back_img ">
           <img src="/assets/img/background.png" alt="logo" />
         </div>

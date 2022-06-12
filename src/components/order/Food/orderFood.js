@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Tab, Tabs } from "react-bootstrap";
+import Axios from "axios";
+
 import Food from "./food";
 import Header from "../../Header";
 import SlidingPane from "react-sliding-pane";
@@ -8,28 +10,33 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { faCircleMinus } from "@fortawesome/free-solid-svg-icons";
+import { CONNECTION_STRING } from "../../../config/index";
 
 export default function OrderFood(props) {
   const [state, setState] = useState({
     isPaneOpen: false,
     isPaneOpenLeft: false,
   });
+  const [tof, setTof] = useState([]);
   const { onAdd, onRemove } = props;
-
-  const { drinks } = props;
   const { cartItems } = props;
-  // tạm tính
   const itemsPrice = cartItems.reduce((a, c) => a + c.Fd_price * c.qty, 0);
-  // tiền ship
   const shippingPrice = itemsPrice < 2000 ? 0 : 50;
-  // tổng tiền
   const totalPrice = itemsPrice + shippingPrice;
+  const data = !localStorage.itemRes ? "" : JSON.parse(localStorage.itemRes);
 
-  const token = !localStorage.ToFdata ? "" : JSON.parse(localStorage.ToFdata);
-  const db = token.data;
+  useEffect(() => {
+    const getTof = async () => {
+      const TofRes = await Axios.get(
+        CONNECTION_STRING + `/typeofFood/${data.Res_id}`
+      );
+      setTof(TofRes.data);
+    };
+    getTof();
+  }, []);
 
   function RenderTab() {
-    let toFData = [...db];
+    let toFData = [...tof];
     return toFData.map((tof, i) => {
       const foodDb = tof.Food;
       return (

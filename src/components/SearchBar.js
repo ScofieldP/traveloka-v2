@@ -25,7 +25,7 @@ const SearchBar = () => {
           CONNECTION_STRING + "/search/restaurant",
           resData
         );
-        localStorage.setItem("res", JSON.stringify(res.data.rows));
+        localStorage.setItem("listRes", JSON.stringify(res.data.rows));
       } catch (err) {
         if (err.response && err.response.data.errorMessage)
           console.log(err.response.data.errorMessage);
