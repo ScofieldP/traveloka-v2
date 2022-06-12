@@ -1,8 +1,8 @@
 import { React, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Axios from "axios";
-import OrderFood from "../order/Food.js/orderFood";
-import OrderTable from "../order/Table.js/orderTable";
+import OrderFood from "../order/Food/orderFood";
+import OrderTable from "../order/Table/orderTable";
 
 import { Tabs, Tab } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -42,11 +42,16 @@ const Detailres = () => {
     today.getHours().length !== 1 ? "0" + today.getHours() : today.getHours();
   time = time + ":" + today.getMinutes();
 
-  async function GetDataAPI() {
+  async function GetToFAPI() {
     const TofRes = await Axios.get(
       CONNECTION_STRING + `/typeofFood/${data.Res_id}`
     );
     localStorage.setItem("ToFdata", JSON.stringify(TofRes));
+  }
+
+  async function GetTableAPI() {
+    const tbl = await Axios.get(CONNECTION_STRING + `/table/${data.Res_id}`);
+    localStorage.setItem("Tbldata", JSON.stringify(tbl));
   }
 
   return (
@@ -167,7 +172,7 @@ const Detailres = () => {
                       className="text-decoration-none text-black"
                       to="/orderFood"
                       element={<OrderFood />}
-                      onClick={GetDataAPI()}
+                      onClick={GetToFAPI()}
                     >
                       Đặt Online
                     </Link>
@@ -179,6 +184,7 @@ const Detailres = () => {
                       className="text-decoration-none text-black"
                       to="/orderTable"
                       element={<OrderTable />}
+                      onClick={GetTableAPI()}
                     >
                       Đặt bàn
                     </Link>

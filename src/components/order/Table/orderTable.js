@@ -10,7 +10,7 @@ import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { faCircleMinus } from "@fortawesome/free-solid-svg-icons";
 import Header from "../../Header";
 import Footer from "../../Footer";
-import Food from "../Food.js/Food";
+import Food from "../Food/food";
 import Water from "../../fakeData/Water";
 export default function OrderTable(props) {
   const { products, onAdd, onRemove } = props;
@@ -18,7 +18,7 @@ export default function OrderTable(props) {
   const { drinks } = props;
   const { cartItems } = props;
   // tạm tính
-  const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
+  const itemsPrice = cartItems.reduce((a, c) => a + c.Fd_price * c.qty, 0);
   // tổng tiền
   const totalPrice = itemsPrice;
   //date
@@ -26,6 +26,41 @@ export default function OrderTable(props) {
   let handleColor = (time) => {
     return time.getHours() > 12 ? "text-success" : "text-error";
   };
+
+  const token = !localStorage.ToFdata ? "" : JSON.parse(localStorage.ToFdata);
+  const db = token.data;
+
+  function RenderTab() {
+    let toFData = [...db];
+    return toFData.map((tof, i) => {
+      const foodDb = tof.Food;
+      return (
+        <Tab eventKey={tof.ToF_name} title={tof.ToF_name}>
+          {!tof.ToF_state ? (
+            <>
+              {tof.ToF_name} hiện đang tạm dừng bán. Chúng tôi chân thành xin
+              lỗi vì sự bất tiện này
+            </>
+          ) : (
+            <>
+              {foodDb.length > 0 ? (
+                <>
+                  {foodDb.map((food) => (
+                    <Food key={food.ToF_id} food={food} onAdd={onAdd} />
+                  ))}
+                </>
+              ) : (
+                <>
+                  Thực đơn đang được cập nhập. Chúng tôi chân thành xin lỗi vì
+                  sự bất tiện này
+                </>
+              )}
+            </>
+          )}
+        </Tab>
+      );
+    });
+  }
 
   return (
     <>
@@ -177,8 +212,6 @@ export default function OrderTable(props) {
                       </button>
                     </div>
                   </Tab.Pane>
-
-                  {/* Đặt món trước */}
                   <Tab.Pane eventKey="second">
                     <div className="container border border-dark border-top-0 border-end-0">
                       <div className="order_title border-0 border-bottom border-dark">
@@ -190,34 +223,11 @@ export default function OrderTable(props) {
                           id="uncontrolled-tab-example"
                           className="mb-3 justify-content-center border-0"
                         >
-                          <Tab
-                            eventKey="home"
-                            title="Thức ăn"
-                            className=" border border-0"
-                          >
-                            {products.map((product) => (
-                              <Food
-                                key={product.id}
-                                product={product}
-                                onAdd={onAdd}
-                              />
-                            ))}
-                          </Tab>
-                          <Tab eventKey="profile" title="Thức uống">
-                            {drinks.map((drink) => (
-                              <Water
-                                key={drink.id}
-                                drink={drink}
-                                onAdd={onAdd}
-                              />
-                            ))}
-                          </Tab>
-                          <Tab eventKey="contact" title="Tráng miệng"></Tab>
+                          {RenderTab()}
                         </Tabs>
                       </div>
                     </div>
                   </Tab.Pane>
-
                   <Tab.Pane eventKey="third">
                     {/* Chi tiết hóa đơn */}
                     <div>
@@ -235,11 +245,11 @@ export default function OrderTable(props) {
 
                         <div className="col-5">
                           <p className="my-4 mb-0 fw-bold fs-5">
-                            {item.title}{" "}
+                            {item.Fd_name}
                           </p>
                           <div>
                             <p className="m-0">
-                              Số lượng: {item.qty} x {item.price}
+                              Số lượng: {item.qty} x {item.Fd_price}
                             </p>
                           </div>
                         </div>

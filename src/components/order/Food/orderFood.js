@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Tab, Tabs } from "react-bootstrap";
-import Food from "./Food";
-import Water from "../../fakeData/Water";
+import Food from "./food";
 import Header from "../../Header";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
