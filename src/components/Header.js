@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Register from "./auth/Register";
 import { findGetParameter } from "../js/gettoken";
 import authApi from "../apis/authapi";
 const Header = () => {
   const [user, setUser] = useState(null);
-  const navigate = useNavigate();
   useEffect(() => {
     const getUser = async () => {
       const response = await authApi.getUser(findGetParameter("token"));

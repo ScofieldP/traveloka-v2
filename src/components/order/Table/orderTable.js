@@ -1,301 +1,195 @@
-import React from "react";
-import { useState } from "react";
-import { Nav } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-import { Row, Col, Tab, Tabs } from "react-bootstrap";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
-import { faCircleMinus } from "@fortawesome/free-solid-svg-icons";
 import Header from "../../Header";
 import Footer from "../../Footer";
-import Food from "../Food/food";
-import Water from "../../fakeData/Water";
-export default function OrderTable(props) {
-  const { products, onAdd, onRemove } = props;
+import { CONNECTION_STRING } from "../../../config/index";
 
-  const { drinks } = props;
-  const { cartItems } = props;
-  // tạm tính
-  const itemsPrice = cartItems.reduce((a, c) => a + c.Fd_price * c.qty, 0);
-  // tổng tiền
-  const totalPrice = itemsPrice;
-  //date
+export default function OrderTable(props) {
+  const [tbl, setTbl] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
+  const [userPhone, setUserPhone] = useState(null);
+  const [userName, setUserName] = useState(null);
+  const [number, setNumber] = useState(null);
+  const [deposit, setDeposit] = useState(null);
+  const [table, setTable] = useState(null);
+  const [tblID, setTblID] = useState(null);
+  const [note, setNote] = useState(null);
+
+  const navigate = useNavigate();
+
   let handleColor = (time) => {
     return time.getHours() > 12 ? "text-success" : "text-error";
   };
 
-  const token = !localStorage.ToFdata ? "" : JSON.parse(localStorage.ToFdata);
-  const db = token.data;
-
-  function RenderTab() {
-    let toFData = [...db];
-    return toFData.map((tof, i) => {
-      const foodDb = tof.Food;
-      return (
-        <Tab eventKey={tof.ToF_name} title={tof.ToF_name}>
-          {!tof.ToF_state ? (
-            <>
-              {tof.ToF_name} hiện đang tạm dừng bán. Chúng tôi chân thành xin
-              lỗi vì sự bất tiện này
-            </>
-          ) : (
-            <>
-              {foodDb.length > 0 ? (
-                <>
-                  {foodDb.map((food) => (
-                    <Food key={food.ToF_id} food={food} onAdd={onAdd} />
-                  ))}
-                </>
-              ) : (
-                <>
-                  Thực đơn đang được cập nhập. Chúng tôi chân thành xin lỗi vì
-                  sự bất tiện này
-                </>
-              )}
-            </>
-          )}
-        </Tab>
+  const data = !localStorage.itemRes ? "" : JSON.parse(localStorage.itemRes);
+  const user = !localStorage.user ? "" : JSON.parse(localStorage.user);
+  useEffect(() => {
+    const getTbl = async () => {
+      const tblRes = await Axios.get(
+        CONNECTION_STRING + `/table/${data.Res_id}`
       );
+      setTbl(tblRes.data);
+      setUserName(user.name);
+      setUserPhone(user.phone);
+    };
+    getTbl();
+  }, []);
+
+  function ReanderTable() {
+    let tableList = [...tbl];
+    return tableList.map((tbl, i) => {
+      return <option value={tbl.Tbl_id}>{tbl.Tbl_name}</option>;
     });
+  }
+  function SetValueTable() {
+    const tb = tbl.find((a) => a.Tbl_id === tblID);
+    setTable(tb.Tbl_name);
+    setDeposit(tb ? tb.Tbl_deposit : null);
+    setNumber(tb ? tb.Tbl_number : null);
+  }
+
+  function OrderTable() {
+    const tableDetail = {
+      table,
+      number,
+      startDate,
+      userName,
+      deposit,
+      userPhone,
+      note,
+      tableID: tblID,
+      resID: data.Res_id,
+    };
+    localStorage.setItem("orderTable", JSON.stringify(tableDetail));
+    navigate("/orderFood");
   }
 
   return (
     <>
       <Header />
-
       <section className="main_table py-5">
         <div className="container w-75 border border-dark">
-          <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-            <Row>
-              <Col sm={3}>
-                <Nav variant="pills" className="flex-column">
-                  <Nav.Item>
-                    <Nav.Link eventKey="first">Đặt bàn </Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="second">Đặt món trước</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="third">Chi tiết hóa đơn</Nav.Link>
-                  </Nav.Item>
-                </Nav>
-              </Col>
-              <Col sm={9} className="p-0">
-                <Tab.Content>
-                  {/* Đặt bàn trước */}
-                  <Tab.Pane eventKey="first" className="bg-dark">
-                    <div className="container border border-dark border-end-0 border-bottom-0 border-top-0 bg-dark">
-                      <div className="order_title border-0 border-bottom border-dark ">
-                        <h4 className="text-center py-2 font_title">
-                          Phiếu đặt bàn
-                        </h4>
-                      </div>
-                      <div className="form_tbl d-flex py-3">
-                        <div className="col-6">
-                          {/* Thời gian nhận bàn */}
-                          <div className="date_picker">
-                            <label
-                              for="datepicker"
-                              class="form-label text-white"
-                            >
-                              Ngày đặt bàn
-                            </label>
-                            <DatePicker
-                              showTimeSelect
-                              selected={startDate}
-                              dateFormat="dd/MM/yyyy"
-                              onChange={(date) => setStartDate(date)}
-                              timeClassName={handleColor}
-                            />
-                          </div>
-                          {/* Số điện thoại */}
-                          <div className="phone_number mt-3">
-                            <label
-                              for="datepicker"
-                              class="form-label text-white "
-                            >
-                              Số điện thoại
-                            </label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Số điện thoại"
-                            />
-                          </div>
+          <div className="container border border-dark border-end-0 border-bottom-0 border-top-0 bg-dark">
+            <div className="order_title border-0 border-bottom border-dark ">
+              <h4 className="text-center py-2 font_title">Phiếu đặt bàn</h4>
+            </div>
+            <div className="form_tbl d-flex py-3">
+              <div className="col-6">
+                {/* Thời gian nhận bàn */}
+                <div className="date_picker">
+                  <label for="datepicker" class="form-label text-white">
+                    Ngày đặt bàn
+                  </label>
+                  <DatePicker
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    showTimeSelect
+                    timeIntervals={15}
+                    dateFormat="dd/MM/yyyy, h:mm aa"
+                    timeClassName={handleColor}
+                  />
+                </div>
+                {/* Số điện thoại */}
+                <div className="phone_number mt-3">
+                  <label for="datepicker" class="form-label text-white ">
+                    Số điện thoại
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Số điện thoại"
+                    value={userPhone}
+                    onChange={(e) => userPhone(e.target.value)}
+                  />
+                </div>
 
-                          {/* Chọn bàn */}
-                          <div className="pick_table mt-3">
-                            <label
-                              for="datepicker"
-                              class="form-label text-white"
-                            >
-                              Chọn bàn
-                            </label>
-                            <input
-                              type="text"
-                              class="form-control text-white"
-                              placeholder="Chọn bàn "
-                            />
-                          </div>
+                {/* Chọn bàn */}
+                <div className="pick_table mt-3">
+                  <label for="datepicker" class="form-label text-white">
+                    Chọn bàn
+                  </label>
+                  <select
+                    type="text"
+                    class="form-control"
+                    onChange={(e) => setTblID(e.target.value)}
+                    onClick={SetValueTable}
+                  >
+                    <option value="">Chọn</option>
+                    {ReanderTable()}
+                  </select>
+                </div>
 
-                          {/* Đặt cọc trước */}
-                          <div className="pick_table mt-3">
-                            <label
-                              for="datepicker"
-                              class="form-label text-white"
-                            >
-                              Đặt cọc trước
-                            </label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Đặt cọc trước"
-                            />
-                          </div>
-                        </div>
+                {/* Đặt cọc trước */}
+                <div className="pick_table mt-3">
+                  <label for="datepicker" class="form-label text-white">
+                    Đặt cọc trước
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Đặt cọc trước"
+                    value={deposit}
+                    onChange={(e) => setDeposit(e.target.value)}
+                  />
+                </div>
+              </div>
 
-                        <div className="col-6 ms-3">
-                          {/* Số khách */}
-                          <div className="pick_table">
-                            <label
-                              for="datepicker"
-                              class="form-label text-white"
-                            >
-                              Số lượng người
-                            </label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Số lượng người "
-                            />
-                          </div>
+              <div className="col-6 ms-3">
+                {/* Số khách */}
+                <div className="pick_table">
+                  <label for="datepicker" class="form-label text-white">
+                    Số lượng người
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Số lượng người "
+                    value={number}
+                    onChange={(e) => setNumber(e.target.value)}
+                  />
+                </div>
 
-                          {/* Khách hàng */}
-                          <div className="pick_table mt-3">
-                            <label
-                              for="datepicker"
-                              class="form-label text-white"
-                            >
-                              Họ tên khách hàng
-                            </label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Nhập tên khách hàng"
-                            />
-                          </div>
+                {/* Khách hàng */}
+                <div className="pick_table mt-3">
+                  <label for="datepicker" class="form-label text-white">
+                    Họ tên khách hàng
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Nhập tên khách hàng"
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                  />
+                </div>
 
-                          {/* Ghi chú */}
-                          <div className="pick_table mt-3">
-                            <label
-                              for="datepicker"
-                              class="form-label text-white"
-                            >
-                              Ghi chú
-                            </label>
-                            <input
-                              type="text"
-                              class="form-control1 "
-                              placeholder="Ghi chú"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <button
-                        type="button"
-                        class="btn btn-primary w-100 py-3 mt-3 "
-                      >
-                        ĐẶT BÀN
-                      </button>
-                    </div>
-                  </Tab.Pane>
-                  <Tab.Pane eventKey="second">
-                    <div className="container border border-dark border-top-0 border-end-0">
-                      <div className="order_title border-0 border-bottom border-dark">
-                        <h4 className="text-center py-2">Đặt món trước</h4>
-                      </div>
-                      <div className="">
-                        <Tabs
-                          defaultActiveKey="home"
-                          id="uncontrolled-tab-example"
-                          className="mb-3 justify-content-center border-0"
-                        >
-                          {RenderTab()}
-                        </Tabs>
-                      </div>
-                    </div>
-                  </Tab.Pane>
-                  <Tab.Pane eventKey="third">
-                    {/* Chi tiết hóa đơn */}
-                    <div>
-                      {cartItems.length === 0 && <div>Giỏ hàng trống</div>}
-                    </div>
-                    {cartItems.map((item) => (
-                      <div key={item.id} className="row mt-2">
-                        <div className="col-3">
-                          <img
-                            src={item.img}
-                            style={{ width: "100px", height: "100px" }}
-                            alt=""
-                          />
-                        </div>
-
-                        <div className="col-5">
-                          <p className="my-4 mb-0 fw-bold fs-5">
-                            {item.Fd_name}
-                          </p>
-                          <div>
-                            <p className="m-0">
-                              Số lượng: {item.qty} x {item.Fd_price}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="col-4 ">
-                          <div className="d-flex justify-content-center my-5">
-                            <FontAwesomeIcon
-                              icon={faCirclePlus}
-                              className="me-3"
-                              onClick={() => onAdd(item)}
-                            />
-
-                            <FontAwesomeIcon
-                              icon={faCircleMinus}
-                              className=""
-                              onClick={() => onRemove(item)}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                    {cartItems.length !== 0 && (
-                      <>
-                        <div className=" justify-content-end">
-                          <p className="d-flex justify-content-end">
-                            Tạm tính: {itemsPrice}
-                          </p>
-                          <p className="d-flex justify-content-end">
-                            Tiền cọc:
-                          </p>
-                          <p className="d-flex justify-content-end">
-                            Tổng tiền: {totalPrice}
-                          </p>
-                        </div>
-
-                        <input
-                          type="submit"
-                          value="Thanh toán"
-                          className="w-100 p-2"
-                        />
-                      </>
-                    )}
-                  </Tab.Pane>
-                </Tab.Content>
-              </Col>
-            </Row>
-          </Tab.Container>
+                {/* Ghi chú */}
+                <div className="pick_table mt-3">
+                  <label for="datepicker" class="form-label text-white">
+                    Ghi chú
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control1 "
+                    placeholder="Ghi chú"
+                    value={note}
+                    onChange={(e) => setNote(e.target.value)}
+                  />
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="btn btn-primary w-100 py-3 mt-3 "
+              onClick={OrderTable}
+            >
+              ĐẶT BÀN
+            </button>
+          </div>
         </div>
       </section>
 
