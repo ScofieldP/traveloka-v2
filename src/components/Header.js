@@ -38,22 +38,25 @@ const Header = () => {
               <img src="/assets/img/logo.png" alt="logo" />
             </div>
             {user ? (
-              
               <>
-              
-              <NavDropdown
-              id="nav-dropdown-dark-example"
-              title = {"Xin chào " + user.name}>
-                <NavDropdown.Item href="/">
-                  Trang chủ
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/restaurant">
-                  Đặt nhà hàng  
-                </NavDropdown.Item>
-                <NavDropdown.Item onClick={logout} href="/">Đăng Xuất</NavDropdown.Item>
-
-              </NavDropdown>
-              
+                <NavDropdown
+                  id="nav-dropdown-dark-example"
+                  title={"Xin chào " + user.name}
+                >
+                  <NavDropdown.Item href="/">Trang chủ</NavDropdown.Item>
+                  <NavDropdown.Item href="/restaurant">
+                    Đặt nhà hàng
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    href="https://profile.vinhphancommunity.xyz/profile/view"
+                    target="_blank"
+                  >
+                    Lịch sử giao dịch
+                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={logout} href="/">
+                    Đăng Xuất
+                  </NavDropdown.Item>
+                </NavDropdown>
               </>
             ) : (
               <>

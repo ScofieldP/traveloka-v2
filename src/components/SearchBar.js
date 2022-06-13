@@ -67,9 +67,10 @@ const SearchBar = () => {
                 <input
                   type="text"
                   className="form-control shadow-none border-dark position-static"
-                  placeholder="Nhập món ăn "
+                  placeholder="Tính năng đang phát triển..."
                   onChange={(e) => setFood(e.target.value)}
                   id="food"
+                  readOnly
                 />
               </div>
             </div>

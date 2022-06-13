@@ -21,7 +21,9 @@ export default function OrderFood(props) {
   const { onAdd, onRemove } = props;
   const { cartItems } = props;
   const itemsPrice = cartItems.reduce((a, c) => a + c.Fd_price * c.qty, 0);
-  const shippingPrice = itemsPrice < 2000 ? 0 : 50;
+  const dis = itemsPrice * 0.01;
+  const shippingPrice = itemsPrice < 200000 ? 0 : dis;
+
   const totalPrice = itemsPrice + shippingPrice;
   const data = !localStorage.itemRes ? "" : JSON.parse(localStorage.itemRes);
 
@@ -146,7 +148,7 @@ export default function OrderFood(props) {
                       Tạm tính: {itemsPrice}
                     </p>
                     <p className="d-flex justify-content-end">
-                      Phí ship: {shippingPrice}
+                      Discount: {shippingPrice}
                     </p>
                     <p className="d-flex justify-content-end">
                       Tổng tiền: {totalPrice}

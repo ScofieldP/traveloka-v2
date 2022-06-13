@@ -15,6 +15,7 @@ class AuthApi {
     return axios.post(url, data, {
       headers: {
         "content-type": "application/json",
+        service_code: "EATS",
       },
     });
   };
