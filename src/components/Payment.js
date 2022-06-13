@@ -4,6 +4,8 @@ import Footer from './Footer';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTachographDigital } from "@fortawesome/free-solid-svg-icons";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+
 import Modal from "react-modal";
 import { Tabs, Tab } from "react-bootstrap";
 
@@ -125,7 +127,7 @@ const Payment = () => {
          {/* Thông tin khách đặt bàn */}
          <div className="container bg-white">
         <div className="userInfo mt-3">
-            <h4 className="py-3 ms-1 m-0"><FontAwesomeIcon icon={faLocationDot} className="me-2"/>Chi tiết khách đặt bàn</h4>
+            <h4 className="py-3 ms-1 m-0"><FontAwesomeIcon icon={faCircleInfo} className="me-2"/>Chi tiết khách đặt bàn</h4>
             <div class="row">
 
             <div className="">
