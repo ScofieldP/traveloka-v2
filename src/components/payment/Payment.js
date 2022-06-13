@@ -72,7 +72,7 @@ const Payment = () => {
             <div class="row">
               <div className="col-3">
                 <img
-                  src="/assets/img/food-1.png"
+                  src={cart.Fd_image}
                   style={{ width: "120px", height: "120px" }}
                   alt="food"
                 />
