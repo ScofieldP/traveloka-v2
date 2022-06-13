@@ -1,6 +1,5 @@
 import { React, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Axios from "axios";
 import OrderFood from "../order/Food/orderFood";
 import OrderTable from "../order/Table/orderTable";
 
@@ -13,7 +12,6 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 import Header from "../Header";
 import Footer from "../Footer";
-import { CONNECTION_STRING } from "../../config/index";
 function ReadMore({ children = 0 }) {
   const text = children;
   const [isShow, setIsShowLess] = useState(true);
@@ -154,33 +152,42 @@ const Detailres = () => {
                 <p className="fs-5 m-0 fw-bold">Hình thức phục vụ</p>
               </div>
 
-              <div className="btn_order d-flex mt-3">
-                <div className="order_food">
-                  <button type="button" class="btn btn-warning me-3">
-                    <Link
-                      className="text-decoration-none text-black"
-                      to="/orderFood"
-                      element={<OrderFood />}
-                      onClick={SetResItem()}
-                    >
-                      Đặt Online
-                    </Link>
-                  </button>
-                </div>
-                <div className="order_table pb-5  ">
-                  <button type="button" class="btn btn-info ">
-                    <Link
-                      className="text-decoration-none text-black"
-                      to="/orderTable"
-                      element={<OrderTable />}
-                      onClick={SetResItem()}
-                      data={data}
-                    >
-                      Đặt bàn
-                    </Link>
-                  </button>
-                </div>
-              </div>
+              {localStorage.user ? (
+                <>
+                  <div className="btn_order d-flex mt-3">
+                    <div className="order_food">
+                      <button type="button" class="btn btn-warning me-3">
+                        <Link
+                          className="text-decoration-none text-black"
+                          to="/orderFood"
+                          element={<OrderFood />}
+                          onClick={SetResItem()}
+                        >
+                          Đặt Online
+                        </Link>
+                      </button>
+                    </div>
+                    <div className="order_table pb-5  ">
+                      <button
+                        type="button"
+                        class="btn btn-info "
+                        onClick={SetResItem()}
+                      >
+                        <Link
+                          className="text-decoration-none text-black"
+                          to="/orderTable"
+                          element={<OrderTable />}
+                          data={data}
+                        >
+                          Đặt bàn
+                        </Link>
+                      </button>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <p>Hãy đăng nhập để Đặt món ăn</p>
+              )}
             </div>
           </div>
         </div>
