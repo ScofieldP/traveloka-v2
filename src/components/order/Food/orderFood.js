@@ -142,7 +142,7 @@ export default function OrderFood(props) {
                   </div>
                 </div>
               ))}
-              {cartItems.length !== 0 && (
+              {(cartItems.length !== 0 || data) && (
                 <>
                   <div className=" justify-content-end">
                     <p className="d-flex justify-content-end">

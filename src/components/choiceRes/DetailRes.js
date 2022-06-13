@@ -44,6 +44,7 @@ const Detailres = () => {
 
   function SetResItem() {
     localStorage.setItem("itemRes", JSON.stringify(data));
+    localStorage.removeItem("orderTable");
   }
 
   return (
@@ -67,11 +68,7 @@ const Detailres = () => {
                 <p>Sự lụa chọn hoàn hảo theo phong cách của bạn</p>
               </div>
               <div className="res_img pt-3 border-0 border-bottom border-secondary pb-3 ">
-                <img
-                  src={data.Res_image}
-                  alt=""
-                  style={{ width: "100%" }}
-                />
+                <img src={data.Res_image} alt="" style={{ width: "100%" }} />
               </div>
               <div className="res_collection border-0 border-bottom border-secondary pb-3">
                 <Tabs

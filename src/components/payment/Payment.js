@@ -69,19 +69,13 @@ const Payment = () => {
       return (
         <tr>
           <td>
-            <div class="row">
-              <div className="col-3">
-                <img
-                  src={cart.Fd_image}
-                  style={{ width: "120px", height: "120px" }}
-                  alt="food"
-                />
-              </div>
-              <div className="col-6">
-                <p className="align-middle">{cart.Fd_name}</p>
-              </div>
-            </div>
+            <img
+              src={cart.Fd_image}
+              style={{ width: "120px", height: "120px" }}
+              alt="food"
+            />
           </td>
+          <td>{cart.Fd_name}</td>
           <td>{cart.Fd_price}</td>
           <td>{cart.qty}</td>
           <td>{total} VND</td>
@@ -114,14 +108,15 @@ const Payment = () => {
               <div className="userInfo">
                 <h4 className="py-3 ms-1 m-0">
                   <FontAwesomeIcon icon={faLocationDot} className="me-2" />
-                  Địa chỉ nhận hàng
+                  {table ? <>Thông tin khách hàng</> : <>Địa chỉ nhận hàng</>}
                 </h4>
                 <div class="row">
                   <div className="col-6">
+                    Họ tên:{" "}
                     <p className="ms-1">{user ? user.name : "Vô danh"}</p>
                   </div>
                   <div className="col-6">
-                    <p>{user ? user.address : "Không xác định"}</p>
+                    Địa chỉ: <p>{user ? user.address : "Không xác định"}</p>
                   </div>
                 </div>
               </div>
@@ -131,10 +126,13 @@ const Payment = () => {
             <div className="container bg-white">
               <div className="orderFood mt-3 ">
                 <div className="row">
-                  <h4 className="py-3 ms-1 m-0">Đặt đồ ăn</h4>
+                  <h4 className="py-3 ms-1 m-0">
+                    {table ? <>Đặt trước món ăn</> : <>Đặt món ăn Online</>}
+                  </h4>
                   <div className="">
                     <table>
                       <tr>
+                        <th>Hình minh họa</th>
                         <th>Món ăn</th>
                         <th>Đơn giá</th>
                         <th>Số lượng</th>
