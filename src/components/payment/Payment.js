@@ -18,7 +18,25 @@ const Payment = () => {
     ? ""
     : JSON.parse(localStorage.orderTable);
   const carts = !localStorage.lstOrFd ? "" : JSON.parse(localStorage.lstOrFd);
-  console.log(user, table, carts);
+  const itemRes = !localStorage.itemRes ? "" : JSON.parse(localStorage.itemRes);
+  const details = carts.cart.map((x) => {
+    const dt = {
+      productName: x.Fd_name,
+      quantity: x.qty,
+      price: x.Fd_price,
+      thumbnail: "",
+      link: "http://g08-cusrestaurant-traveloka.surge.sh/restaurant",
+    };
+    return dt;
+  });
+  const db = {
+    total: carts.cart.length,
+    reward: 100,
+    details,
+    userId: user.userId,
+    voucherCode: "free",
+    partnerId: itemRes.Fdr_id,
+  };
 
   function openModal() {
     setIsOpen(true);
@@ -71,38 +89,19 @@ const Payment = () => {
   }
 
   function SendData() {
-    const details = carts.cart.map((x) => {
-      const dt = {
-        productName: x.Fd_name,
-        quantity: x.qty,
-        price: x.Fd_price,
-        thumbnail: "",
-        link: "http://g08-cusrestaurant-traveloka.surge.sh/restaurant",
-      };
-      return dt;
-    });
-    const db = {
-      total: carts.cart.length,
-      reward: 100,
-      details,
-      userId: table.userId,
-      voucherCode: "free",
-      partnerId: "",
-    };
-
-    const senddb = async () => {
-      const response = await authApi.saveOrders(db);
-      return response;
-    };
-    if (senddb) {
-      if (
-        window.confirm(
-          "Giao dịch thành công, bạn có muốn xem lịch sử giao dịch?"
-        )
-      ) {
-        navigate("https://profile.vinhphancommunity.xyz/profile/view");
-      }
-    }
+    // const senddb = async () => {
+    //   const response = await authApi.saveOrders(db);
+    //   return response;
+    // };
+    // if (senddb) {
+    //   if (
+    //     window.confirm(
+    //       "Giao dịch thành công, bạn có muốn xem lịch sử giao dịch?"
+    //     )
+    //   ) {
+    //     navigate("https://profile.vinhphancommunity.xyz/profile/view");
+    //   }
+    // }
   }
   return (
     <>
@@ -183,7 +182,7 @@ const Payment = () => {
                         <tr>
                           <td>{user.name}</td>
                           <td>{user.phone}</td>
-                          <td>{table.startDate}</td>
+                          <td>{table.formatTime}</td>
                           <td>{table.table}</td>
                           <td>{table.number}</td>
                           <td>{table.deposit}</td>
