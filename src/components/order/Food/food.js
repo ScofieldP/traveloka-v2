@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Food(props) {
   const { food, onAdd } = props;
   return (
-    <div className="row mt-3 border border-dark rounded-3">
+    <div className="row mt-3 border border-dark rounded-3 me-1">
       <div className="col-3 p-0">
         <img
           src={food.Fd_image}

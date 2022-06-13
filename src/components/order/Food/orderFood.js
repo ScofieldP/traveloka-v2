@@ -4,6 +4,7 @@ import Axios from "axios";
 
 import Food from "./food";
 import Header from "../../Header";
+import Footer from "../../Footer";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
@@ -114,7 +115,7 @@ export default function OrderFood(props) {
                     />
                   </div>
 
-                  <div className="col-5">
+                  <div className="col-6">
                     <p className="my-4 mb-0 fw-bold fs-5">{item.Fd_name} </p>
                     <div>
                       <p className="m-0">
@@ -122,7 +123,7 @@ export default function OrderFood(props) {
                       </p>
                     </div>
                   </div>
-                  <div className="col-4 ">
+                  <div className="col-3 ">
                     <div className="d-flex justify-content-center my-5">
                       <FontAwesomeIcon
                         icon={faCirclePlus}
@@ -175,6 +176,8 @@ export default function OrderFood(props) {
           </Tabs>
         </div>
       </section>
+
+      <Footer />
     </>
   );
 }
