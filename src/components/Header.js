@@ -66,7 +66,7 @@ const Header = () => {
                   </Link>
                   <a
                     className="authB"
-                    href="https://profile.vinhphancommunity.xyz/Login?redirect=http://localhost:3000/restaurant"
+                    href="https://profile.vinhphancommunity.xyz/Login?redirect=http://g08-cusrestaurant-traveloka.surge.sh/"
                   >
                     Đăng nhập
                   </a>
