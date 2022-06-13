@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
+import moment from "moment";
 
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
@@ -53,10 +54,11 @@ export default function OrderTable(props) {
   }
 
   function OrderTable() {
+    const formatTime = moment(startDate).format("DD/MM/YYYY, hh:mm a");
     const tableDetail = {
       table,
       number,
-      startDate,
+      formatTime,
       userName,
       deposit,
       userPhone,
