@@ -1,8 +1,5 @@
 import "./App.css";
 import { useState } from "react";
-import Axios from "axios";
-
-import Home from "./components/Home";
 import "bootstrap/dist/css/bootstrap.css";
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/auth/Login";

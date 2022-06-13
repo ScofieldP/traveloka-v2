@@ -19,30 +19,16 @@ const SearchBar = () => {
     const foodData = {
       keyfind: food ? food : "",
     };
-    if (res !== "") {
-      try {
-        const res = await Axios.post(
-          CONNECTION_STRING + "/search/restaurant",
-          resData
-        );
-        localStorage.setItem("listRes", JSON.stringify(res.data.rows));
-      } catch (err) {
-        if (err.response && err.response.data.errorMessage)
-          console.log(err.response.data.errorMessage);
-        return;
-      }
-    } else {
-      try {
-        const food = await Axios.post(
-          CONNECTION_STRING + `/search/food`,
-          foodData
-        );
-        localStorage.setItem("food", JSON.stringify(food.data.rows));
-      } catch (err) {
-        if (err.response && err.response.data.errorMessage)
-          console.log(err.response.data.errorMessage);
-        return;
-      }
+    try {
+      const res = await Axios.post(
+        CONNECTION_STRING + "/search/restaurant",
+        resData
+      );
+      localStorage.setItem("listRes", JSON.stringify(res.data.rows));
+    } catch (err) {
+      if (err.response && err.response.data.errorMessage)
+        console.log(err.response.data.errorMessage);
+      return;
     }
     if (window.location.pathname === "/choicerestaurant") {
       navigate(0);
