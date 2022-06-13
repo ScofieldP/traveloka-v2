@@ -9,9 +9,9 @@ export default function Food(props) {
     <div className="row mt-3 border border-dark rounded-3">
       <div className="col-3 p-0">
         <img
-          src={food.img}
+          src={food.Fd_image}
           alt=""
-          style={{ width: "180px", height: "180px" }}
+          style={{ width: "180px", height: "200px" }}
         />
       </div>
       <div className="col-7">
