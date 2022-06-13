@@ -45,8 +45,8 @@ const Payment = () => {
         </div>
         </div>
        
-
-        {/* Thông tin người dùng */}
+        {/* ........................................... */}
+        {/* Thông tin khách đặt món */}
         <div className="container bg-white">
         <div className="userInfo">
             <h4 className="py-3 ms-1 m-0"><FontAwesomeIcon icon={faLocationDot} className="me-2"/>Địa chỉ nhận hàng</h4>
@@ -120,12 +120,59 @@ const Payment = () => {
         </div>
         </div>
         </div>
+        {/* ..................................................... end đặt món */}
         
+         {/* Thông tin khách đặt bàn */}
+         <div className="container bg-white">
+        <div className="userInfo mt-3">
+            <h4 className="py-3 ms-1 m-0"><FontAwesomeIcon icon={faLocationDot} className="me-2"/>Chi tiết khách đặt bàn</h4>
+            <div class="row">
+
+            <div className="">
+            <table >
+            <tr>
+                <th>Tên khách hàng</th>
+                <th>Số điện thoại</th>
+                <th>Ngày đặt bàn</th>
+                <th>Chọn bàn</th>
+                <th>Số lượng người</th>
+                <th>Đặt cọc trước</th>
+
+
+            </tr>
+            <tr>
+                <td>
+                Lương Trần Thiên Phúc
+                </td>
+                <td>0783467852</td>
+                <td>25/09/2001</td>
+                <td>Tình nhân</td>
+                <td>2</td>
+                <td>5 xị</td>
+            </tr>
+            <tr>
+                <td>
+                Lương Trần Thiên Phúc
+                </td>
+                <td>0783467852</td>
+                <td>25/09/2001</td>
+                <td>Tình nhân</td>
+                <td>2</td>
+                <td>5 xị</td>
+            </tr>
+            
+            </table>
+            </div> 
+            </div>
+
+        </div>
+        </div>    
         {/* Đặt bàn */}
+        
         <div className="container bg-white">
         <div className="orderTable mt-3">
         <div className="row">
-            <h4 className="py-3 ms-1 m-0">Đặt bàn</h4>
+            <h4 className="py-3 ms-1 m-0">Đặt món trước</h4>
             <div className="">
             <table >
             <tr>
@@ -238,7 +285,7 @@ const Payment = () => {
         <div className="choicePayment mt-3">
         <h4 className="py-3 ms-1 m-0"><FontAwesomeIcon icon={faTachographDigital} className="me-2"/>Phương thức thanh toán</h4>
 
-        <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3">
+        <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" className="mb-3">
         <Tab eventKey="home" title="Stripe">
             <a href="https://stripe.com/"><img src="/assets/img/stripe.png"  alt="food" /></a>
         </Tab>
