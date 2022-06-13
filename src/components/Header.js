@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Register from "./auth/Register";
 import { findGetParameter } from "../js/gettoken";
 import authApi from "../apis/authapi";
+
 const Header = () => {
   const [user, setUser] = useState(null);
   useEffect(() => {
@@ -21,6 +22,13 @@ const Header = () => {
     }
   }, []);
 
+  const logout = () => {
+    localStorage.clear();
+    window.history.replaceState({}, document.title, "/");
+
+    window.location.reload();
+  };
+
   return (
     <section className="header">
       <div className="container">
@@ -30,7 +38,23 @@ const Header = () => {
               <img src="/assets/img/logo.png" alt="logo" />
             </div>
             {user ? (
-              <>Chào mừng {user.name}</>
+              
+              <>
+              
+              <NavDropdown
+              id="nav-dropdown-dark-example"
+              title = {"Xin chào " + user.name}>
+                <NavDropdown.Item href="/">
+                  Trang chủ
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/restaurant">
+                  Đặt nhà hàng  
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={logout} href="/">Đăng Xuất</NavDropdown.Item>
+
+              </NavDropdown>
+              
+              </>
             ) : (
               <>
                 <div className="auth ">

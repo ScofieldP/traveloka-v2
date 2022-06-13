@@ -17,7 +17,7 @@ const Restaurant = () => {
     <>
       <Header />
       <section className="main_menu">
-        <div className="back_img ">
+        <div className="col-12 ">
           <img src="/assets/img/background.png" alt="logo" />
         </div>
         <SearchBar />
