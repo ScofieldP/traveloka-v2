@@ -15,7 +15,7 @@ import OrderTable from "./components/order/Table/orderTable";
 import data from "./components/fakeData/data";
 import data1 from "./components/fakeData/data1";
 import data2 from "./components/fakeData/data2";
-import Payment from './components/Payment'
+import Payment from "./components/payment/Payment";
 function App() {
   const { prodcts } = data;
   const { products } = data1;
@@ -81,7 +81,6 @@ function App() {
         }
       />
       <Route path="/payment" element={<Payment />} />
-
     </Routes>
   );
 }

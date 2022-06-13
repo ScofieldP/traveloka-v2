@@ -25,6 +25,16 @@ export default function OrderFood(props) {
   const totalPrice = itemsPrice + shippingPrice;
   const data = !localStorage.itemRes ? "" : JSON.parse(localStorage.itemRes);
 
+  function SetCartPayment() {
+    const lstOrFd = {
+      cart: cartItems,
+      itemsPrice: itemsPrice ? itemsPrice : "",
+      shippingPrice: shippingPrice ? shippingPrice : "",
+      totalPrice: totalPrice ? totalPrice : "",
+    };
+    localStorage.setItem("lstOrFd", JSON.stringify(lstOrFd));
+  }
+
   useEffect(() => {
     const getTof = async () => {
       const TofRes = await Axios.get(
@@ -143,11 +153,15 @@ export default function OrderFood(props) {
                     </p>
                   </div>
 
-                  <input
+                  <a
                     type="submit"
                     value="Thanh toán"
                     className="w-100 p-2"
-                  />
+                    href="/payment"
+                    onClick={SetCartPayment}
+                  >
+                    Thanh Toán
+                  </a>
                 </>
               )}
             </SlidingPane>
