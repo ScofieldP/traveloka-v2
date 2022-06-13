@@ -110,7 +110,7 @@ export default function OrderFood(props) {
                 <div key={item.id} className="row mt-2">
                   <div className="col-3">
                     <img
-                      src={item.img}
+                      src={item.Fd_image}
                       style={{ width: "100px", height: "100px" }}
                       alt=""
                     />
