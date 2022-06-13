@@ -168,6 +168,7 @@ const Payment = () => {
                           <th>Chọn bàn</th>
                           <th>Số lượng người</th>
                           <th>Đặt cọc trước</th>
+                          <th>Ghi chú</th>
                         </tr>
                         <tr>
                           <td>{user.name}</td>
@@ -176,6 +177,7 @@ const Payment = () => {
                           <td>{table.table}</td>
                           <td>{table.number}</td>
                           <td>{table.deposit}</td>
+                          <td>{table.note}</td>
                         </tr>
                       </table>
                     </div>

@@ -172,7 +172,9 @@
 .form-control1{
   display: block;
     width: 100%;
-    padding: 3.1rem;
+    padding-bottom: 50px;
+    padding-left:20px;
+    padding-top:50px;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -183,7 +185,9 @@
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-
+.form-control1::placeholder {
+    padding-top:20px;
+}
 .btn_book {
   background-color: #FEA116;
     border-color: #FEA116;
