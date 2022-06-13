@@ -86,14 +86,15 @@ export default function OrderTable(props) {
                   <label for="datepicker" class="form-label text-white">
                     Ngày đặt bàn
                   </label>
-                  <DatePicker
-                    selected={startDate}
-                    onChange={(date) => setStartDate(date)}
-                    showTimeSelect
-                    timeIntervals={15}
-                    dateFormat="dd/MM/yyyy, h:mm aa"
-                    timeClassName={handleColor}
-                  />
+                    <DatePicker
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                  showTimeSelect
+                  timeFormat="HH:mm"
+                  timeIntervals={15}
+                  timeCaption="time"
+                  dateFormat="MMMM d, yyyy h:mm aa"
+                />
                 </div>
                 {/* Số điện thoại */}
                 <div className="phone_number mt-3">
