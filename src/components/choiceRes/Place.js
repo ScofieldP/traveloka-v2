@@ -8,7 +8,7 @@ export default function Place(props) {
       <div className="row border border-dark rounded-3">
         <div className="col-4 ps-0">
           <img
-            src={restaurant.img}
+            src={restaurant.Res_image}
             alt=""
             style={{ width: "200px", height: "200px" }}
           />
