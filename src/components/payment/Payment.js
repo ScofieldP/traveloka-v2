@@ -19,6 +19,8 @@ const Payment = () => {
     : JSON.parse(localStorage.orderTable);
   const carts = !localStorage.lstOrFd ? "" : JSON.parse(localStorage.lstOrFd);
   const itemRes = !localStorage.itemRes ? "" : JSON.parse(localStorage.itemRes);
+  var total = carts.itemsPrice;
+  if (table) total = total + table.deposit - carts.shippingPrice;
   const details = carts.cart.map((x) => {
     const dt = {
       productName: x.Fd_name,
@@ -88,20 +90,10 @@ const Payment = () => {
     });
   }
 
-  function SendData() {
-    // const senddb = async () => {
-    //   const response = await authApi.saveOrders(db);
-    //   return response;
-    // };
-    // if (senddb) {
-    //   if (
-    //     window.confirm(
-    //       "Giao dịch thành công, bạn có muốn xem lịch sử giao dịch?"
-    //     )
-    //   ) {
-    //     navigate("https://profile.vinhphancommunity.xyz/profile/view");
-    //   }
-    // }
+  async function SendData() {
+    const response = await authApi.saveOrders(db);
+    console.log(response);
+    if (window.confirm("Giao dịch thành công")) navigate("/restaurant");
   }
   return (
     <>
@@ -311,13 +303,11 @@ const Payment = () => {
                 </Tabs>
               </div>
               <div className="total">
-                <p className="d-flex justify-content-end">Tạm tính:VND</p>
-                <p className="d-flex justify-content-end">Tạm tính:VND</p>
                 <p className="d-flex justify-content-end">
-                  Sử dụng Voucher:VND
+                  Sử dụng Voucher: -{carts.shippingPrice} VND
                 </p>
                 <p className="d-flex justify-content-end fw-bold">
-                  Tổng tiền:VND
+                  Tổng tiền:{total} VND
                 </p>
               </div>
               <div className="paymentBtn d-flex justify-content-end">
